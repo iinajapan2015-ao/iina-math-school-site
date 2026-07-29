@@ -1,5 +1,5 @@
-# Replace YOUR-DOMAIN.example after the production domain is confirmed.
+# Production sitemap for the GitHub Pages site.
 User-agent: *
 Allow: /
 
-Sitemap: https://YOUR-DOMAIN.example/sitemap.xml
+Sitemap: https://iinajapan2015-ao.github.io/iina-math-school-site/sitemap.xml
