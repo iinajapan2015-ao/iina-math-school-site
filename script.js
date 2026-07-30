@@ -4,6 +4,9 @@ const loadingScreen = document.querySelector("[data-loading-screen]");
 const titleScreen = document.querySelector("[data-title-screen]");
 const startButton = document.querySelector("[data-start-button]");
 const startMenu = document.querySelector("[data-start-menu]");
+const startNotice = document.querySelector("[data-start-notice]");
+const startNoticeMessage = document.querySelector("[data-start-notice-message]");
+const startNoticeTriggers = [...document.querySelectorAll("[data-start-notice-trigger]")];
 
 if (loadingScreen && titleScreen && startButton && startMenu) {
   const startMenuLinks = [...startMenu.querySelectorAll("a")];
@@ -72,6 +75,42 @@ if (loadingScreen && titleScreen && startButton && startMenu) {
     } else if (!event.shiftKey && document.activeElement === lastElement) {
       event.preventDefault();
       firstElement.focus();
+    }
+  });
+}
+
+if (startNotice && startNoticeMessage && startNoticeTriggers.length) {
+  const noticeCloseButtons = [...startNotice.querySelectorAll("[data-notice-close]")];
+  const noticeReturnButton = startNotice.querySelector(".start-notice__return");
+  let lastNoticeTrigger = startNoticeTriggers[0];
+
+  const closeStartNotice = () => {
+    startNotice.hidden = true;
+    startNotice.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-menu-open");
+    lastNoticeTrigger.focus();
+  };
+
+  const openStartNotice = (trigger) => {
+    lastNoticeTrigger = trigger;
+    startNoticeMessage.textContent = trigger.dataset.notice;
+    startNotice.hidden = false;
+    startNotice.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-menu-open");
+    window.requestAnimationFrame(() => noticeReturnButton?.focus());
+  };
+
+  startNoticeTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => openStartNotice(trigger));
+  });
+
+  noticeCloseButtons.forEach((button) => {
+    button.addEventListener("click", closeStartNotice);
+  });
+
+  startNotice.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeStartNotice();
     }
   });
 }

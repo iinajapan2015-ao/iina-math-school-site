@@ -359,11 +359,18 @@ textarea {
   text-shadow: none;
 }
 
+.start-options {
+  display: grid;
+  justify-items: start;
+  gap: 0;
+  width: min(100%, 260px);
+}
+
 .start-button {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  justify-self: center;
+  justify-content: flex-start;
+  justify-self: stretch;
   gap: 10px;
   min-height: 42px;
   padding: 5px 10px;
@@ -378,6 +385,7 @@ textarea {
   font-synthesis: none;
   text-rendering: geometricPrecision;
   text-shadow: none;
+  text-decoration: none;
   touch-action: manipulation;
   cursor: pointer;
 }
@@ -386,11 +394,13 @@ textarea {
   width: 1em;
   flex: 0 0 1em;
   color: #ffbd3e;
+  opacity: 0;
 }
 
 .start-button:hover span,
 .start-button:focus-visible span {
   color: #fff;
+  opacity: 1;
 }
 
 .start-button:focus-visible {
@@ -513,6 +523,56 @@ textarea {
 
 .start-menu__links a:hover span,
 .start-menu__links a:focus-visible span {
+  color: #050505;
+}
+
+.start-notice__window {
+  width: min(100%, 430px);
+}
+
+.start-notice__body {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: 24px 18px 20px;
+  text-align: center;
+}
+
+.start-notice__body p {
+  margin: 0;
+  font-family: var(--pixel-font);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.start-notice__return {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 6px 12px;
+  color: #fff;
+  background: #050505;
+  border: 2px solid transparent;
+  font-family: var(--pixel-font);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.start-notice__return span {
+  color: #ffbd3e;
+}
+
+.start-notice__return:hover,
+.start-notice__return:focus-visible {
+  color: #050505;
+  background: #ffbd3e;
+  border-color: #fff;
+  outline: 0;
+}
+
+.start-notice__return:hover span,
+.start-notice__return:focus-visible span {
   color: #050505;
 }
 

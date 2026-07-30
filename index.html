@@ -26,7 +26,7 @@
     <meta name="twitter:title" content="IINA算数教室｜オンラインで考える力を育てる算数教室">
     <meta name="twitter:description" content="IINA算数教室は、オンラインでの学習を中心に、暗記ではなく自分で考え導き出す力を育てる算数教室です。小学4年生対象「光コース」、小学5年生対象「海コース」、小学6年生対象「桜コース」、全学年対象「パーソナル指導」を開講しています。">
     <meta name="twitter:image" content="https://iinajapan2015-ao.github.io/iina-math-school-site/assets/images/iina-og-image.png">
-    <link rel="stylesheet" href="styles.css?v=layout-center-1">
+    <link rel="stylesheet" href="styles.css?v=start-options-1">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -93,10 +93,20 @@
 
         <div class="title-command">
           <p class="title-copy">さんすうをぼうけんする。</p>
-          <button class="start-button" type="button" data-start-button>
-            <span aria-hidden="true">▶</span>
-            はじめる
-          </button>
+          <div class="start-options" aria-label="スタートメニュー">
+            <button class="start-button" type="button" data-start-button>
+              <span aria-hidden="true">▶</span>
+              はじめる
+            </button>
+            <button class="start-button" type="button" data-start-notice-trigger data-notice="あたらしい情報は ただいま じゅんびちゅうです。">
+              <span aria-hidden="true">▶</span>
+              あたらしい情報
+            </button>
+            <a class="start-button" href="https://three-second-maze.aoiao20120.chatgpt.site/iina-v2/secret-maze/">
+              <span aria-hidden="true">▶</span>
+              秘密のダンジョン
+            </a>
+          </div>
         </div>
       </section>
     </section>
@@ -123,6 +133,24 @@
       </section>
     </div>
 
+    <div class="start-menu" data-start-notice aria-hidden="true" hidden>
+      <button class="start-menu__backdrop" type="button" data-notice-close tabindex="-1" aria-label="メッセージを閉じる"></button>
+
+      <section class="start-menu__window start-notice__window" role="dialog" aria-modal="true" aria-labelledby="start-notice-title">
+        <header class="start-menu__header">
+          <h2 id="start-notice-title">おしらせ</h2>
+          <button class="start-menu__close" type="button" data-notice-close aria-label="メッセージを閉じる">×</button>
+        </header>
+        <div class="start-notice__body">
+          <p data-start-notice-message></p>
+          <button class="start-notice__return" type="button" data-notice-close>
+            <span aria-hidden="true">▶</span>
+            もどる
+          </button>
+        </div>
+      </section>
+    </div>
+
     <noscript>
       <style>
         body { overflow: auto; }
@@ -144,6 +172,6 @@
       </main>
     </noscript>
 
-    <script src="script.js?v=public-audit-1" defer></script>
+    <script src="script.js?v=start-options-1" defer></script>
   </body>
 </html>
