@@ -1,4 +1,3 @@
-# Replace YOUR-DOMAIN.example after the production domain is confirmed.
 User-agent: *
 Allow: /
 

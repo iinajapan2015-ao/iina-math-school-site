@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IINA算数診断｜小学5年生の算数の現在地を確認</title>
+    <meta name="description" content="IINA算数診断は、来年度に受験学年を迎える小学5年生を対象に、答案の正誤だけでなく途中式や図、考え方まで分析し、現在地と優先課題をまとめる診断サービスです。">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#f6b65f">
+    <link rel="canonical" href="https://iinajapan2015-ao.github.io/iina-math-school-site/diagnosis.html">
+    <link rel="icon" type="image/png" sizes="128x128" href="assets/images/favicon-128.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="preload" href="assets/fonts/DotGothic16-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="IINA算数教室">
+    <meta property="og:title" content="IINA算数診断｜小学5年生の算数の現在地を確認">
+    <meta property="og:description" content="答案の途中式や図、考え方まで分析し、受験学年に向けた現在地と優先課題を整理します。">
+    <meta property="og:url" content="https://iinajapan2015-ao.github.io/iina-math-school-site/diagnosis.html">
+    <meta property="og:image" content="https://iinajapan2015-ao.github.io/iina-math-school-site/assets/images/iina-og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="IINA算数教室">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IINA算数診断｜小学5年生の算数の現在地を確認">
+    <meta name="twitter:description" content="答案の途中式や図、考え方まで分析し、受験学年に向けた現在地と優先課題を整理します。">
+    <meta name="twitter:image" content="https://iinajapan2015-ao.github.io/iina-math-school-site/assets/images/iina-og-image.png">
+    <link rel="stylesheet" href="styles.css?v=website-v3">
+    <style>
+      html,
+      body {
+        min-height: 100%;
+      }
+
+      body {
+        margin: 0;
+        color: #fff;
+        background: #f6b65f;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        content: "";
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          0deg,
+          transparent 0 3px,
+          rgba(105, 54, 18, 0.055) 3px 4px
+        );
+      }
+
+      button,
+      a {
+        font: inherit;
+      }
+
+      .diagnosis-preview {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        place-items: center;
+        min-height: 100svh;
+        padding: 14px;
+      }
+
+      .diagnosis-shell {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        gap: 12px;
+        width: min(100%, 620px);
+        height: min(820px, calc(100svh - 28px));
+        min-height: 540px;
+      }
+
+      .diagnosis-status {
+        display: grid;
+        grid-template-columns: 52px 1fr auto;
+        align-items: center;
+        gap: 10px;
+        min-height: 72px;
+        padding: 8px 12px;
+        border: 4px solid #fff;
+        background: #050505;
+        box-shadow: 0 0 0 2px #050505, 0 0 0 4px #fff;
+        font-family: var(--pixel-font);
+      }
+
+      .diagnosis-status img {
+        display: block;
+        width: 52px;
+        height: 52px;
+        object-fit: contain;
+        image-rendering: pixelated;
+      }
+
+      .diagnosis-status__title {
+        min-width: 0;
+        margin: 0;
+        color: #fff;
+        font-size: clamp(0.92rem, 4.5vw, 1.2rem);
+        font-weight: 400;
+        line-height: 1.3;
+      }
+
+      .diagnosis-status__page {
+        color: #ffbd3e;
+        font-size: clamp(0.68rem, 3vw, 0.8rem);
+        white-space: nowrap;
+      }
+
+      .diagnosis-window {
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        min-height: 0;
+        border: 4px solid #fff;
+        background: #050505;
+        box-shadow: 0 0 0 2px #050505, 0 0 0 4px #fff;
+        font-family: var(--pixel-font);
+      }
+
+      .diagnosis-pages {
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .diagnosis-page {
+        display: none;
+        height: 100%;
+        padding: 20px 18px 16px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-color: #ffbd3e #181818;
+      }
+
+      .diagnosis-page.is-active {
+        display: block;
+        animation: pageAppear 220ms steps(4, end) both;
+      }
+
+      .diagnosis-page h1,
+      .diagnosis-page h2,
+      .diagnosis-page h3 {
+        margin: 0;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .diagnosis-page h1,
+      .diagnosis-page h2 {
+        color: #ffbd3e;
+        font-size: clamp(1.05rem, 5vw, 1.45rem);
+      }
+
+      .diagnosis-page h3 {
+        margin-top: 12px;
+        color: #fff5ce;
+        font-size: clamp(0.88rem, 4vw, 1.05rem);
+      }
+
+      .diagnosis-page p,
+      .diagnosis-page li,
+      .diagnosis-page td,
+      .diagnosis-page th {
+        font-size: clamp(0.78rem, 3.35vw, 0.95rem);
+        line-height: 1.85;
+      }
+
+      .diagnosis-page p {
+        margin: 12px 0 0;
+      }
+
+      .diagnosis-page strong {
+        color: #fff45c;
+        font-weight: 400;
+      }
+
+      .diagnosis-page ul {
+        display: grid;
+        gap: 6px;
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .diagnosis-page li {
+        display: flex;
+        align-items: center;
+        gap: 0.7em;
+        padding-left: 0;
+      }
+
+      .diagnosis-page li::before {
+        flex: 0 0 auto;
+        color: #ffbd3e;
+        content: "■";
+        font-size: 0.62em;
+        line-height: 1;
+      }
+
+      .diagnosis-lead {
+        color: #fff5ce;
+        text-align: center;
+      }
+
+      .diagnosis-note {
+        color: #d8d8d8;
+        font-size: 0.86em !important;
+      }
+
+      .diagnosis-price {
+        color: #fff45c;
+        font-size: clamp(1.15rem, 5.5vw, 1.5rem) !important;
+        text-align: center;
+      }
+
+      .plan-mark {
+        display: block;
+        width: fit-content;
+        margin: 12px auto 0;
+        padding: 4px 10px;
+        color: #050505;
+        background: #ffbd3e;
+        font-size: 0.75rem;
+      }
+
+      .plan-mark--pro {
+        color: #fff;
+        background: linear-gradient(90deg, #ff5a5f, #ffbd3e, #59ee8c, #55d8ff, #9d86ff, #ff70d5);
+        text-shadow: 1px 1px 0 #050505;
+      }
+
+      .diagnosis-table-wrap {
+        margin-top: 14px;
+        overflow-x: auto;
+      }
+
+      .diagnosis-table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        color: #fff;
+      }
+
+      .diagnosis-table th,
+      .diagnosis-table td {
+        padding: 6px 3px;
+        border: 2px solid #fff;
+        font-size: clamp(0.62rem, 2.75vw, 0.78rem);
+        line-height: 1.55;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      .diagnosis-table th {
+        color: #050505;
+        background: #ffbd3e;
+      }
+
+      .diagnosis-table td:first-child {
+        width: 48%;
+        text-align: left;
+      }
+
+      .diagnosis-table th:first-child {
+        width: 48%;
+      }
+
+      .flow-step {
+        margin-top: 14px;
+        padding-left: 14px;
+        border-left: 4px solid #ffbd3e;
+      }
+
+      .flow-step h3 {
+        margin: 0;
+        text-align: left;
+      }
+
+      .diagnosis-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 10px 12px 12px;
+        border-top: 2px solid #fff;
+      }
+
+      .diagnosis-nav button {
+        min-height: 44px;
+        padding: 8px 6px;
+        border: 0;
+        color: #fff;
+        background: #050505;
+        font-family: var(--pixel-font);
+        font-size: clamp(0.7rem, 3.2vw, 0.85rem);
+        cursor: pointer;
+      }
+
+      .diagnosis-nav button:first-child {
+        text-align: left;
+      }
+
+      .diagnosis-nav button:last-child {
+        color: #ffbd3e;
+        text-align: right;
+      }
+
+      .diagnosis-nav button:disabled {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .diagnosis-nav button:focus-visible {
+        outline: 3px solid #55d8ff;
+        outline-offset: 2px;
+      }
+
+      @keyframes pageAppear {
+        from {
+          opacity: 0;
+          transform: translateX(8px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @media (max-width: 360px) {
+        .diagnosis-preview {
+          padding: 10px;
+        }
+
+        .diagnosis-shell {
+          height: calc(100svh - 20px);
+          gap: 10px;
+        }
+
+        .diagnosis-status {
+          grid-template-columns: 44px 1fr auto;
+          min-height: 62px;
+          padding: 6px 8px;
+        }
+
+        .diagnosis-status img {
+          width: 44px;
+          height: 44px;
+        }
+
+        .diagnosis-page {
+          padding: 16px 14px 12px;
+        }
+
+        .diagnosis-nav {
+          padding: 8px 8px 10px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .diagnosis-page.is-active {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="diagnosis-preview">
+      <div class="diagnosis-shell">
+        <header class="diagnosis-status">
+          <img src="assets/images/math-monster.webp" alt="" width="1024" height="1024">
+          <p class="diagnosis-status__title">IINA算数診断</p>
+          <span class="diagnosis-status__page" data-page-counter>1 / 7</span>
+        </header>
+
+        <section class="diagnosis-window" aria-label="IINA算数診断のご案内">
+          <div class="diagnosis-pages">
+            <article class="diagnosis-page is-active" data-diagnosis-page aria-hidden="false">
+              <h1>IINA算数診断</h1>
+              <h3>受験学年を迎える前に、<br>算数の現在地を確認しませんか？</h3>
+              <p>IINA算数診断は、<strong>来年度に受験学年を迎える小学5年生</strong>を対象とした診断サービスです。</p>
+              <p>答案の正誤だけでなく、途中式や図、問題の読み取り方、解法の選び方まで確認し、</p>
+              <ul>
+                <li>現在できていること</li>
+                <li>つまずいている原因</li>
+                <li>優先して取り組む課題</li>
+                <li>今後の学習方針</li>
+              </ul>
+              <p>を診断レポートにまとめます。</p>
+              <p>6年生になると、志望校対策や過去問演習が本格的に始まります。5年生の今のうちに算数の課題を整理し、受験学年に向けた準備を始めましょう。</p>
+              <p class="diagnosis-note">※他学年向けの診断も、今後順次展開する予定です。</p>
+            </article>
+
+            <article class="diagnosis-page" data-diagnosis-page aria-hidden="true">
+              <span class="plan-mark">BASIC PLAN</span>
+              <h2>Basicプラン</h2>
+              <p class="diagnosis-price">5,500円（税込）</p>
+              <p class="diagnosis-lead">算数の現在地と、これから優先すべき課題を確認したい方におすすめです。</p>
+              <h3>プラン内容</h3>
+              <ul>
+                <li>診断テスト</li>
+                <li>分野別習得度</li>
+                <li>誤答原因の簡易分析</li>
+                <li>今後の学習方針</li>
+                <li>Basic版診断レポートPDF</li>
+              </ul>
+            </article>
+
+            <article class="diagnosis-page" data-diagnosis-page aria-hidden="true">
+              <span class="plan-mark plan-mark--pro">PRO PLAN</span>
+              <h2>Proプラン</h2>
+              <p class="diagnosis-price">19,800円（税込）</p>
+              <p class="diagnosis-lead">答案を詳しく分析し、具体的な学習方法まで相談したい方におすすめです。</p>
+              <h3>プラン内容</h3>
+              <ul>
+                <li>診断テスト</li>
+                <li>問題別の答案分析</li>
+                <li>分野別習得度</li>
+                <li>思考特性の分析</li>
+                <li>誤答原因の詳細分析</li>
+                <li>4週間の学習攻略ルート</li>
+                <li>先生からの詳しい総評</li>
+                <li>Pro版詳細診断レポートPDF</li>
+                <li>Zoom個別面談30分</li>
+              </ul>
+            </article>
+
+            <article class="diagnosis-page" data-diagnosis-page aria-hidden="true">
+              <h2>プラン比較</h2>
+              <div class="diagnosis-table-wrap">
+                <table class="diagnosis-table">
+                  <thead>
+                    <tr><th>内容</th><th>Basic</th><th>Pro</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>料金（税込）</td><td>5,500円</td><td>19,800円</td></tr>
+                    <tr><td>採点・分野別習得度</td><td>○</td><td>○</td></tr>
+                    <tr><td>強み・優先課題</td><td>○</td><td>○</td></tr>
+                    <tr><td>誤答原因分析</td><td>簡易</td><td>詳細</td></tr>
+                    <tr><td>問題別答案分析</td><td>―</td><td>○</td></tr>
+                    <tr><td>思考特性分析</td><td>―</td><td>○</td></tr>
+                    <tr><td>4週間の学習ルート</td><td>―</td><td>○</td></tr>
+                    <tr><td>診断レポート</td><td>Basic版</td><td>Pro詳細版</td></tr>
+                    <tr><td>Zoom個別面談</td><td>なし</td><td>30分</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="diagnosis-page" data-diagnosis-page aria-hidden="true">
+              <h2>診断の流れ</h2>
+              <section class="flow-step">
+                <h3>1．お申し込み</h3>
+                <p>BasicまたはProプランを選び、公式LINEでお申し込みください。</p>
+              </section>
+              <section class="flow-step">
+                <h3>2．診断テストを受け取る</h3>
+                <p>LINEで診断テストのPDFと受験方法をお送りします。</p>
+              </section>
+              <section class="flow-step">
+                <h3>3．答案を提出する</h3>
+                <p>解き終わった答案を1つのPDFにまとめ、LINEでお送りください。</p>
+                <p>途中式や図も診断材料になるため、清書せず、実際に解いた答案をご提出ください。</p>
+              </section>
+              <section class="flow-step">
+                <h3>4．診断レポートを受け取る</h3>
+                <p>答案を採点・分析し、完成した診断レポートPDFをLINEでお送りします。</p>
+              </section>
+            </article>
+
+            <article class="diagnosis-page" data-diagnosis-page aria-hidden="true">
+              <h2>答案PDFについて</h2>
+              <p>提出前に、次の点をご確認ください。</p>
+              <ul>
+                <li>文字や数字がはっきり読める</li>
+                <li>答案全体とページの四隅が写っている</li>
+                <li>影や光の反射がない</li>
+                <li>ページの順番が正しい</li>
+                <li>すべてのページが1つのPDFにまとまっている</li>
+              </ul>
+              <p>答案が不鮮明な場合やページが不足している場合は、再提出をお願いすることがあります。</p>
+            </article>
+
+            <article class="diagnosis-page" data-diagnosis-page aria-hidden="true">
+              <h2>ご確認事項</h2>
+              <ul>
+                <li>現在の対象学年は小学5年生です。</li>
+                <li>他学年向けの診断は、今後順次展開する予定です。</li>
+                <li>問題・答案・診断レポートはPDF形式でやり取りします。</li>
+                <li>データの送受信と日程調整にはLINEを使用します。</li>
+                <li>ProプランのZoom個別面談は30分間です。</li>
+                <li>本診断は模試の偏差値や合格可能性を判定するものではありません。</li>
+                <li>診断結果は、受験時点の答案に基づく学習上の見立てです。</li>
+              </ul>
+            </article>
+          </div>
+
+          <nav class="diagnosis-nav" aria-label="診断案内のページ操作">
+            <button type="button" data-prev disabled>◀ まえにもどる</button>
+            <button type="button" data-next>つぎへ ▶</button>
+          </nav>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      (() => {
+        const pages = [...document.querySelectorAll("[data-diagnosis-page]")];
+        const previousButton = document.querySelector("[data-prev]");
+        const nextButton = document.querySelector("[data-next]");
+        const counter = document.querySelector("[data-page-counter]");
+        let currentPage = 0;
+
+        const renderPage = () => {
+          pages.forEach((page, index) => {
+            const isActive = index === currentPage;
+            page.classList.toggle("is-active", isActive);
+            page.setAttribute("aria-hidden", String(!isActive));
+            if (isActive) page.scrollTop = 0;
+          });
+
+          counter.textContent = `${currentPage + 1} / ${pages.length}`;
+          previousButton.disabled = currentPage === 0;
+          nextButton.textContent = currentPage === pages.length - 1 ? "さいしょへ ▶" : "つぎへ ▶";
+        };
+
+        previousButton.addEventListener("click", () => {
+          if (currentPage > 0) currentPage -= 1;
+          renderPage();
+        });
+
+        nextButton.addEventListener("click", () => {
+          currentPage = currentPage === pages.length - 1 ? 0 : currentPage + 1;
+          renderPage();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "ArrowLeft" && currentPage > 0) {
+            currentPage -= 1;
+            renderPage();
+          }
+          if (event.key === "ArrowRight") {
+            currentPage = currentPage === pages.length - 1 ? 0 : currentPage + 1;
+            renderPage();
+          }
+        });
+
+        renderPage();
+      })();
+    </script>
+  </body>
+</html>

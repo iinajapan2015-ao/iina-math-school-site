@@ -14,7 +14,7 @@ if (loadingScreen && titleScreen && startButton && startMenu) {
   let lastMenuTrigger = startButton;
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const loadingDelay = prefersReducedMotion ? 0 : 900;
+  const loadingDelay = prefersReducedMotion ? 0 : 1200;
 
   window.setTimeout(() => {
     loadingScreen.classList.add("is-hidden");
