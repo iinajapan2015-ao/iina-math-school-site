@@ -1169,6 +1169,12 @@ textarea {
   color: #ffdf73;
 }
 
+.course-diagnosis-link {
+  margin-bottom: 20px;
+  background: #146b91;
+  box-shadow: 0 0 0 2px #146b91, 5px 5px 0 var(--ink);
+}
+
 .course-link:hover,
 .course-link:focus-visible {
   color: var(--ink);
