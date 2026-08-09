@@ -1868,9 +1868,11 @@ textarea {
 }
 
 .column-flow--single-frame {
-  padding: 10px 14px;
+  margin: 24px 0;
+  padding: 16px;
   background: var(--orange-100);
-  border: 3px solid var(--ink);
+  border: 0;
+  border-left: 7px solid var(--orange-700);
 }
 
 .column-flow--single-frame li {
