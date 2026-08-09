@@ -1867,6 +1867,26 @@ textarea {
   margin-top: 4px;
 }
 
+.column-flow--single-frame {
+  padding: 10px 14px;
+  background: var(--orange-100);
+  border: 3px solid var(--ink);
+}
+
+.column-flow--single-frame li {
+  padding: 8px 0 28px;
+  background: transparent;
+  border: 0;
+}
+
+.column-flow--single-frame li:last-child {
+  padding-bottom: 8px;
+}
+
+.column-flow--single-frame li + li {
+  margin-top: 0;
+}
+
 .column-quote {
   margin: 24px 0;
   padding: 16px;
