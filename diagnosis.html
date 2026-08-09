@@ -523,7 +523,7 @@
 
           counter.textContent = `${currentPage + 1} / ${pages.length}`;
           previousButton.disabled = currentPage === 0;
-          nextButton.textContent = currentPage === pages.length - 1 ? "さいしょへ ▶" : "つぎへ ▶";
+          nextButton.textContent = currentPage === pages.length - 1 ? "スタート画面に戻る" : "つぎへ ▶";
         };
 
         previousButton.addEventListener("click", () => {
@@ -532,7 +532,12 @@
         });
 
         nextButton.addEventListener("click", () => {
-          currentPage = currentPage === pages.length - 1 ? 0 : currentPage + 1;
+          if (currentPage === pages.length - 1) {
+            window.location.href = "index.html";
+            return;
+          }
+
+          currentPage += 1;
           renderPage();
         });
 
@@ -542,7 +547,12 @@
             renderPage();
           }
           if (event.key === "ArrowRight") {
-            currentPage = currentPage === pages.length - 1 ? 0 : currentPage + 1;
+            if (currentPage === pages.length - 1) {
+              window.location.href = "index.html";
+              return;
+            }
+
+            currentPage += 1;
             renderPage();
           }
         });
