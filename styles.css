@@ -1827,6 +1827,46 @@ textarea {
   color: var(--orange-700);
 }
 
+.column-flow {
+  display: grid;
+  gap: 0;
+  margin: 24px auto;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.column-flow li {
+  position: relative;
+  padding: 12px 14px 30px;
+  background: var(--orange-100);
+  border: 2px solid var(--ink);
+  line-height: 1.65;
+}
+
+.column-flow li::after {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  color: var(--orange-700);
+  content: "↓";
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.column-flow li:last-child {
+  padding-bottom: 12px;
+}
+
+.column-flow li:last-child::after {
+  content: none;
+}
+
+.column-flow li + li {
+  margin-top: 4px;
+}
+
 .column-quote {
   margin: 24px 0;
   padding: 16px;
@@ -1861,6 +1901,45 @@ textarea {
 .column-cta:focus-visible {
   color: var(--ink);
   background: #ffbd3e;
+}
+
+.column-related {
+  padding: 20px;
+  background: var(--orange-100);
+  border: 3px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--orange-500);
+}
+
+.column-related h2 {
+  margin-bottom: 14px;
+}
+
+.column-related a {
+  display: block;
+  min-height: 44px;
+  padding: 14px;
+  color: var(--ink);
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  text-decoration: none;
+}
+
+.column-related a:hover,
+.column-related a:focus-visible {
+  background: #ffdf9a;
+}
+
+.column-related__number {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--orange-700);
+  font-size: 0.78rem;
+}
+
+.column-related__title {
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.75;
 }
 
 .column-footer {
