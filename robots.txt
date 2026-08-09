@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://iinajapan2015-ao.github.io/iina-math-school-site/sitemap.xml
+Sitemap: https://iinamath.com/sitemap.xml
