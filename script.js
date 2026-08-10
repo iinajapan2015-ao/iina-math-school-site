@@ -4,6 +4,8 @@ const loadingScreen = document.querySelector("[data-loading-screen]");
 const titleScreen = document.querySelector("[data-title-screen]");
 const startButton = document.querySelector("[data-start-button]");
 const startMenu = document.querySelector("[data-start-menu]");
+const dungeonButton = document.querySelector("[data-dungeon-button]");
+const dungeonMenu = document.querySelector("[data-dungeon-menu]");
 const startNotice = document.querySelector("[data-start-notice]");
 const startNoticeMessage = document.querySelector("[data-start-notice-message]");
 const startNoticeTriggers = [...document.querySelectorAll("[data-start-notice-trigger]")];
@@ -65,6 +67,67 @@ if (loadingScreen && titleScreen && startButton && startMenu) {
     const focusableElements = [
       startMenu.querySelector(".start-menu__close"),
       ...startMenuLinks,
+    ].filter(Boolean);
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  });
+}
+
+if (dungeonButton && dungeonMenu) {
+  const dungeonLinks = [...dungeonMenu.querySelectorAll("a")];
+  const dungeonCloseButtons = [...dungeonMenu.querySelectorAll("[data-dungeon-close]")];
+  const dungeonCloseButton = dungeonMenu.querySelector(".start-menu__close");
+  const dungeonReturnButton = dungeonMenu.querySelector(".dungeon-menu__return");
+
+  const closeDungeonMenu = (restoreFocus = true) => {
+    dungeonMenu.hidden = true;
+    dungeonMenu.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-menu-open");
+
+    if (restoreFocus) {
+      dungeonButton.focus();
+    }
+  };
+
+  const openDungeonMenu = () => {
+    dungeonMenu.hidden = false;
+    dungeonMenu.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-menu-open");
+    window.requestAnimationFrame(() => dungeonLinks[0]?.focus());
+  };
+
+  dungeonButton.addEventListener("click", openDungeonMenu);
+
+  dungeonCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => closeDungeonMenu());
+  });
+
+  dungeonLinks.forEach((link) => {
+    link.addEventListener("click", () => closeDungeonMenu(false));
+  });
+
+  dungeonMenu.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeDungeonMenu();
+      return;
+    }
+
+    if (event.key !== "Tab") {
+      return;
+    }
+
+    const focusableElements = [
+      dungeonCloseButton,
+      ...dungeonLinks,
+      dungeonReturnButton,
     ].filter(Boolean);
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];

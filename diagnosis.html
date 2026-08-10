@@ -218,18 +218,27 @@
 
       .plan-mark {
         display: block;
-        width: fit-content;
-        margin: 12px auto 0;
-        padding: 4px 10px;
-        color: #050505;
-        background: #ffbd3e;
+        width: min(100%, 360px);
+        margin: 0 auto 12px;
+        padding: 8px 12px;
         font-size: 0.75rem;
+        text-align: center;
+      }
+
+      .plan-mark--basic {
+        color: #15181c;
+        background: linear-gradient(90deg, #707982 0%, #e7edf1 28%, #aeb7be 52%, #f8fafb 75%, #818b94 100%);
+        border: 2px solid #f8fafb;
+        box-shadow: 0 0 0 2px #59616a, inset 0 2px 0 rgba(255, 255, 255, 0.72);
+        text-shadow: 0 1px 0 #fff;
       }
 
       .plan-mark--pro {
-        color: #fff;
-        background: linear-gradient(90deg, #ff5a5f, #ffbd3e, #59ee8c, #55d8ff, #9d86ff, #ff70d5);
-        text-shadow: 1px 1px 0 #050505;
+        color: #251500;
+        background: linear-gradient(90deg, #8b5a00 0%, #f4c647 24%, #fff1a0 50%, #c78b12 76%, #ffd968 100%);
+        border: 2px solid #fff2a6;
+        box-shadow: 0 0 0 2px #8b5a00, inset 0 2px 0 rgba(255, 255, 255, 0.58);
+        text-shadow: 0 1px 0 #fff4bd;
       }
 
       .diagnosis-table-wrap {
@@ -394,7 +403,7 @@
             </article>
 
             <article class="diagnosis-page" data-diagnosis-page aria-hidden="true">
-              <span class="plan-mark">BASIC PLAN</span>
+              <span class="plan-mark plan-mark--basic">BASIC PLAN</span>
               <h2>Basicプラン</h2>
               <p class="diagnosis-price">5,500円（税込）</p>
               <p class="diagnosis-lead">算数の現在地と、これから優先すべき課題を確認したい方におすすめです。</p>

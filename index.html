@@ -26,7 +26,7 @@
     <meta name="twitter:title" content="IINA算数教室｜オンラインで考える力を育てる算数教室">
     <meta name="twitter:description" content="IINA算数教室は、オンラインでの学習を中心に、暗記ではなく自分で考え導き出す力を育てる算数教室です。小学4年生対象「光コース」、小学5年生対象「海コース」、小学6年生対象「桜コース」、全学年対象「パーソナル指導」を開講しています。">
     <meta name="twitter:image" content="https://iinamath.com/assets/images/iina-og-image.png">
-    <link rel="stylesheet" href="styles.css?v=website-v3">
+    <link rel="stylesheet" href="styles.css?v=website-v4">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -96,21 +96,24 @@
           <p class="title-copy">答えまでの道のりこそ、冒険だ。</p>
           <div class="start-options" aria-label="スタートメニュー">
             <button class="start-button" type="button" data-start-button>
-              <span aria-hidden="true">▶</span>
-              はじめる(IINA算数教室)
+              <span class="start-button__cursor" aria-hidden="true">▶</span>
+              <span class="start-button__label">はじめる(IINA算数教室)</span>
             </button>
-            <a class="start-button start-button--rainbow" href="diagnosis.html">
-              <span aria-hidden="true">▶</span>
-              レベルを確認(IINA算数診断)
+            <a class="start-button" href="diagnosis.html">
+              <span class="start-button__cursor" aria-hidden="true">▶</span>
+              <span class="new-badge">NEW</span>
+              <span class="start-button__label">レベルを確認(IINA算数診断)</span>
             </a>
             <a class="start-button" href="column/">
-              <span aria-hidden="true">▶</span>
-              秘伝の書(算数コラム)
+              <span class="start-button__cursor" aria-hidden="true">▶</span>
+              <span class="new-badge">NEW</span>
+              <span class="start-button__label">秘伝の書(算数コラム)</span>
             </a>
-            <a class="start-button" href="https://three-second-maze.aoiao20120.chatgpt.site/iina-v2/secret-maze/">
-              <span aria-hidden="true">▶</span>
-              秘密のダンジョン(瞬間記憶能力ゲーム)
-            </a>
+            <button class="start-button" type="button" data-dungeon-button aria-haspopup="dialog" aria-controls="dungeon-menu">
+              <span class="start-button__cursor" aria-hidden="true">▶</span>
+              <span class="new-badge">NEW</span>
+              <span class="start-button__label">秘密のダンジョン(思考力遊び)</span>
+            </button>
           </div>
         </div>
       </section>
@@ -131,10 +134,41 @@
           <a href="grade5.html"><span aria-hidden="true">▶</span> 小5 海コース</a>
           <a href="grade6.html"><span aria-hidden="true">▶</span> 小6 桜コース</a>
           <a href="personal.html"><span aria-hidden="true">▶</span> パーソナル指導</a>
-          <a href="column/"><span aria-hidden="true">▶</span> 秘伝の書(算数コラム)</a>
           <a href="pricing.html"><span aria-hidden="true">▶</span> 費用</a>
           <a href="faq.html"><span aria-hidden="true">▶</span> よくある質問</a>
           <a href="contact.html"><span aria-hidden="true">▶</span> お問い合わせ</a>
+        </nav>
+      </section>
+    </div>
+
+    <div class="start-menu" id="dungeon-menu" data-dungeon-menu aria-hidden="true" hidden>
+      <button class="start-menu__backdrop" type="button" data-dungeon-close tabindex="-1" aria-label="秘密のダンジョンを閉じる"></button>
+
+      <section class="start-menu__window dungeon-menu__window" role="dialog" aria-modal="true" aria-labelledby="dungeon-menu-title">
+        <header class="start-menu__header">
+          <h2 id="dungeon-menu-title">秘密のダンジョン</h2>
+          <button class="start-menu__close" type="button" data-dungeon-close aria-label="秘密のダンジョンを閉じる">×</button>
+        </header>
+
+        <nav class="start-menu__links dungeon-menu__links" aria-label="ゲーム選択メニュー">
+          <a href="https://three-second-maze.aoiao20120.chatgpt.site/iina-v2/secret-maze/">
+            <span aria-hidden="true">▶</span>
+            <span class="dungeon-menu__game">
+              <strong>3秒ダンジョン</strong>
+              <small>3秒だけ見える迷路を記憶してゴールを目指せ！</small>
+            </span>
+          </a>
+          <a href="https://prime-monster-battle.aoiao20120.chatgpt.site">
+            <span aria-hidden="true">▶</span>
+            <span class="dungeon-menu__game">
+              <strong>プライムモンスターとの戦い</strong>
+              <small>素因数分解でモンスターを倒せ！</small>
+            </span>
+          </a>
+          <button class="dungeon-menu__return" type="button" data-dungeon-close>
+            <span aria-hidden="true">←</span>
+            もどる
+          </button>
         </nav>
       </section>
     </div>
@@ -179,6 +213,6 @@
       </main>
     </noscript>
 
-    <script src="script.js?v=website-v3" defer></script>
+    <script src="script.js?v=website-v4" defer></script>
   </body>
 </html>
