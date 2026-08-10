@@ -1565,38 +1565,6 @@ textarea {
   outline-offset: 3px;
 }
 
-.noscript-content {
-  width: min(calc(100% - 32px), 680px);
-  margin: 32px auto;
-  padding: 24px 20px;
-  color: #fff;
-  background: #050505;
-  border: 4px solid #fff;
-  box-shadow: 0 0 0 3px #050505, 7px 7px 0 var(--orange-500);
-}
-
-.noscript-content h2,
-.noscript-content p {
-  margin-top: 0;
-}
-
-.noscript-content p {
-  line-height: 1.8;
-}
-
-.noscript-content nav {
-  display: grid;
-  gap: 8px;
-}
-
-.noscript-content a {
-  min-height: 44px;
-  padding: 9px 10px;
-  color: #050505;
-  background: #ffcf64;
-  text-decoration: none;
-}
-
 .error-page {
   display: grid;
   min-height: 100svh;
