@@ -572,6 +572,78 @@ textarea {
   color: #050505;
 }
 
+.about-menu__window {
+  width: min(100%, 760px);
+}
+
+.about-menu__cards {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 8px;
+  padding: 12px;
+}
+
+.about-menu__card {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  min-width: 0;
+  min-height: 116px;
+  padding: 14px 12px;
+  color: #fff;
+  background: #17120f;
+  border: 2px solid #fff;
+  text-decoration: none;
+}
+
+.about-menu__card-title {
+  color: #fff;
+  font-family: var(--pixel-font);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.about-menu__card-title > span {
+  color: #ffbd3e;
+}
+
+.about-menu__card-copy {
+  color: #e8e1d9;
+  font-family: var(--sans-font);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.about-menu__card:hover,
+.about-menu__card:focus-visible {
+  color: #050505;
+  background: #ffbd3e;
+  outline: 2px solid #ffbd3e;
+  outline-offset: 2px;
+}
+
+.about-menu__card:hover .about-menu__card-title,
+.about-menu__card:focus-visible .about-menu__card-title,
+.about-menu__card:hover .about-menu__card-title > span,
+.about-menu__card:focus-visible .about-menu__card-title > span,
+.about-menu__card:hover .about-menu__card-copy,
+.about-menu__card:focus-visible .about-menu__card-copy {
+  color: #050505;
+}
+
+.start-menu__section-label {
+  margin: 0;
+  padding: 10px 14px 4px;
+  color: #ffcf64;
+  border-top: 3px solid #fff;
+  font-family: var(--pixel-font);
+  font-size: 0.78rem;
+}
+
+.start-menu__links--secondary {
+  padding-top: 4px;
+}
+
 .dungeon-menu__window {
   width: min(100%, 520px);
 }
@@ -814,6 +886,16 @@ textarea {
   line-height: 1.22;
 }
 
+.about-page-lead {
+  width: min(100%, 820px);
+  margin: -8px auto 30px;
+  color: #4c2a1e;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.9;
+  text-align: center;
+}
+
 .greeting-section {
   background:
     linear-gradient(rgba(255, 250, 240, 0.96), rgba(255, 250, 240, 0.96)),
@@ -880,6 +962,85 @@ textarea {
   font-family: var(--pixel-font);
   font-weight: 400;
   text-align: right;
+}
+
+.about-detail-section {
+  background:
+    linear-gradient(rgba(255, 250, 240, 0.96), rgba(255, 250, 240, 0.96)),
+    repeating-linear-gradient(0deg, #f6b65f 0 4px, transparent 4px 16px);
+}
+
+.about-story-window {
+  width: min(100%, 860px);
+}
+
+.about-intro-quote {
+  margin-bottom: 28px !important;
+  color: #ffcf64;
+  font-family: var(--pixel-font);
+  font-size: clamp(1.05rem, 4vw, 1.4rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.75 !important;
+  text-align: center;
+}
+
+.story-chapter + .story-chapter {
+  margin-top: 38px;
+  padding-top: 32px;
+  border-top: 2px solid #fff;
+}
+
+.story-chapter h2 {
+  margin: 0 0 18px;
+  color: #ffcf64;
+  font-family: var(--pixel-font);
+  font-size: clamp(1.15rem, 4vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.story-quote {
+  margin: 26px 0 0;
+  padding: 14px 16px;
+  color: #fff;
+  background: #251b17;
+  border-left: 5px solid #ffbd3e;
+  font-weight: 700;
+  line-height: 2;
+}
+
+.destination-list {
+  display: grid;
+  gap: 8px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.destination-list li {
+  position: relative;
+  min-height: 44px;
+  padding: 10px 10px 10px 28px;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  font-size: 0.96rem;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
+.destination-list li::before {
+  position: absolute;
+  top: 1.15em;
+  left: 11px;
+  width: 8px;
+  height: 8px;
+  content: "";
+  background: #ffbd3e;
+}
+
+.destination-note {
+  margin-top: 24px !important;
+  color: #ffcf64;
+  font-size: 0.88rem !important;
 }
 
 .greeting-character {
@@ -2137,6 +2298,14 @@ textarea {
     min-width: 150px;
   }
 
+  .about-menu__cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .start-menu__links--secondary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .quest-nav__inner {
     justify-content: center;
     width: 100%;
@@ -2158,6 +2327,10 @@ textarea {
   }
 
   .pricing-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .destination-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

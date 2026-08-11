@@ -26,7 +26,7 @@
     <meta name="twitter:title" content="IINA算数教室｜オンラインで考える力を育てる算数教室">
     <meta name="twitter:description" content="IINA算数教室は、オンラインでの学習を中心に、暗記ではなく自分で考え導き出す力を育てる算数教室です。小学4年生対象「光コース」、小学5年生対象「海コース」、小学6年生対象「桜コース」、全学年対象「パーソナル指導」を開講しています。">
     <meta name="twitter:image" content="https://iinamath.com/assets/images/iina-og-image.png">
-    <link rel="stylesheet" href="styles.css?v=website-v4">
+    <link rel="stylesheet" href="styles.css?v=website-v5">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -97,7 +97,7 @@
           <div class="start-options" aria-label="スタートメニュー">
             <button class="start-button" type="button" data-start-button>
               <span class="start-button__cursor" aria-hidden="true">▶</span>
-              <span class="start-button__label">はじめる(IINA算数教室)</span>
+              <span class="start-button__label">冒険をはじめる前に（IINA算数教室について）</span>
             </button>
             <a class="start-button" href="diagnosis.html">
               <span class="start-button__cursor" aria-hidden="true">▶</span>
@@ -122,14 +122,29 @@
     <div class="start-menu" data-start-menu aria-hidden="true" hidden>
       <button class="start-menu__backdrop" type="button" data-menu-close tabindex="-1" aria-label="メニューを閉じる"></button>
 
-      <section class="start-menu__window" role="dialog" aria-modal="true" aria-labelledby="start-menu-title">
+      <section class="start-menu__window about-menu__window" role="dialog" aria-modal="true" aria-labelledby="start-menu-title">
         <header class="start-menu__header">
-          <h2 id="start-menu-title">いきさきをえらぶ</h2>
+          <h2 id="start-menu-title">冒険をはじめる前に</h2>
           <button class="start-menu__close" type="button" data-menu-close aria-label="メニューを閉じる">×</button>
         </header>
 
-        <nav class="start-menu__links" aria-label="行き先メニュー">
-          <a href="greeting.html"><span aria-hidden="true">▶</span> ごあいさつ</a>
+        <nav class="about-menu__cards" aria-label="IINA算数教室について">
+          <a class="about-menu__card" href="greeting.html">
+            <span class="about-menu__card-title"><span aria-hidden="true">▶</span> IINAからの手紙</span>
+            <span class="about-menu__card-copy">全国から学べるオンライン算数教室として、IINAが大切にしていること。</span>
+          </a>
+          <a class="about-menu__card" href="instructor.html">
+            <span class="about-menu__card-title"><span aria-hidden="true">▶</span> この冒険の案内人</span>
+            <span class="about-menu__card-copy">算数・数学と向き合って25年。IINA算数教室の考え方と歩んできた道。</span>
+          </a>
+          <a class="about-menu__card" href="graduates.html">
+            <span class="about-menu__card-title"><span aria-hidden="true">▶</span> 勇者たちの旅立ち</span>
+            <span class="about-menu__card-copy">IINAで学んだ卒業生たちの、過去3年間の主な進学先。</span>
+          </a>
+        </nav>
+
+        <p class="start-menu__section-label">講座・教室案内</p>
+        <nav class="start-menu__links start-menu__links--secondary" aria-label="講座・教室案内メニュー">
           <a href="grade4.html"><span aria-hidden="true">▶</span> 小4 光コース</a>
           <a href="grade5.html"><span aria-hidden="true">▶</span> 小5 海コース</a>
           <a href="grade6.html"><span aria-hidden="true">▶</span> 小6 桜コース</a>
@@ -191,6 +206,6 @@
       </section>
     </div>
 
-    <script src="script.js?v=website-v4" defer></script>
+    <script src="script.js?v=website-v5" defer></script>
   </body>
 </html>

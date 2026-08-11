@@ -41,7 +41,7 @@ if (loadingScreen && titleScreen && startButton && startMenu) {
     startMenu.hidden = false;
     startMenu.setAttribute("aria-hidden", "false");
     document.body.classList.add("is-menu-open");
-    window.requestAnimationFrame(() => startMenuLinks[0]?.focus());
+    window.requestAnimationFrame(() => startMenu.querySelector(".start-menu__close")?.focus());
   };
 
   startButton.addEventListener("click", () => openStartMenu(startButton));
