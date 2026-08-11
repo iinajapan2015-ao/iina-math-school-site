@@ -572,85 +572,30 @@ textarea {
   color: #050505;
 }
 
-.start-menu__window--about {
-  width: min(100%, 760px);
-}
-
-.start-about {
-  padding: 0 14px 16px;
-}
-
-.start-greeting {
-  padding: 20px 0 24px;
-}
-
-.start-greeting h3 {
-  margin: 0 0 20px;
-  color: #ffcf64;
-  font-family: var(--pixel-font);
-  font-size: 1.15rem;
-  font-weight: 400;
-  text-align: center;
-}
-
-.start-greeting__story p,
-.start-about__accordion-body p {
-  margin: 0;
-  font-family: var(--pixel-font);
-  font-size: 0.94rem;
-  font-weight: 600;
-  line-height: 1.95;
-}
-
-.start-greeting__story p + p,
-.start-about__accordion-body p + p {
-  margin-top: 18px;
-}
-
-.start-greeting__principles {
-  display: grid;
-  gap: 8px;
-  margin: 18px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.start-greeting__principles + p {
-  margin-top: 18px;
-}
-
-.start-greeting__principles li {
-  position: relative;
-  padding-left: 20px;
-  font-family: var(--pixel-font);
-  font-size: 0.94rem;
-  font-weight: 700;
-  line-height: 1.8;
-}
-
-.start-greeting__principles li::before {
-  position: absolute;
-  top: 0.7em;
-  left: 2px;
-  width: 8px;
-  height: 8px;
-  content: "";
-  background: #ffbd3e;
-}
-
-.start-greeting__story .start-greeting__signature {
-  margin-top: 26px;
-  color: #ffcf64;
-  font-family: var(--pixel-font);
-  font-size: clamp(0.78rem, 3.3vw, 0.94rem);
-  font-weight: 400;
-  text-align: right;
-  white-space: nowrap;
-}
 
 .start-about__accordions {
   display: grid;
   gap: 10px;
+}
+
+.greeting-accordions {
+  width: min(100%, 820px);
+  margin: 18px auto 0;
+}
+
+.greeting-accordions .start-about__accordion summary {
+  grid-template-rows: auto auto;
+  align-content: center;
+  min-height: 86px;
+}
+
+.greeting-accordions .start-about__summary-title,
+.greeting-accordions .start-about__summary-copy {
+  white-space: nowrap;
+}
+
+.greeting-accordions .start-about__summary-copy {
+  font-size: clamp(0.62rem, 2.8vw, 0.82rem);
 }
 
 .start-about__accordion {
@@ -741,6 +686,11 @@ textarea {
   text-align: center;
 }
 
+.greeting-accordions .start-about__intro {
+  font-size: clamp(0.62rem, 2.8vw, 0.9rem);
+  white-space: nowrap;
+}
+
 .start-about__chapter {
   margin-top: 30px;
   padding-top: 26px;
@@ -794,19 +744,6 @@ textarea {
   margin-top: 22px;
   color: #ffcf64;
   font-size: 0.82rem;
-}
-
-.start-menu__section-label {
-  margin: 0;
-  padding: 10px 14px 4px;
-  color: #ffcf64;
-  border-top: 3px solid #fff;
-  font-family: var(--pixel-font);
-  font-size: 0.78rem;
-}
-
-.start-menu__links--secondary {
-  padding-top: 4px;
 }
 
 .dungeon-menu__window {
@@ -2375,10 +2312,6 @@ textarea {
   }
 
   .start-destination-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .start-menu__links--secondary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
