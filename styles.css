@@ -400,10 +400,6 @@ textarea {
   opacity: 0;
 }
 
-.start-button:first-child .start-button__cursor {
-  opacity: 1;
-}
-
 .start-button__label {
   min-width: 0;
   color: inherit;
