@@ -241,6 +241,47 @@
         text-shadow: 0 1px 0 #fff4bd;
       }
 
+      .report-samples {
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 2px solid #fff;
+      }
+
+      .report-samples__intro {
+        color: #fff5ce;
+        text-align: center;
+      }
+
+      .report-samples__actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .report-sample-button {
+        width: 100%;
+        min-height: 52px;
+        margin: 0;
+        cursor: pointer;
+        font-family: var(--pixel-font);
+        line-height: 1.5;
+        transition: filter 120ms ease, transform 120ms ease;
+      }
+
+      .report-sample-button:hover {
+        filter: brightness(1.08);
+      }
+
+      .report-sample-button:focus-visible {
+        outline: 3px solid #55d8ff;
+        outline-offset: 5px;
+      }
+
+      .report-sample-button:active {
+        transform: translateY(2px);
+      }
+
       .diagnosis-table-wrap {
         margin-top: 14px;
         overflow-x: auto;
@@ -326,6 +367,132 @@
         outline-offset: 2px;
       }
 
+      body.is-report-modal-open {
+        overflow: hidden;
+      }
+
+      .report-modal[hidden] {
+        display: none;
+      }
+
+      .report-modal {
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 14px;
+        font-family: var(--pixel-font);
+      }
+
+      .report-modal__backdrop {
+        position: absolute;
+        inset: 0;
+        border: 0;
+        background: rgba(5, 5, 5, 0.84);
+        cursor: pointer;
+      }
+
+      .report-modal__dialog {
+        position: relative;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        width: min(100%, 960px);
+        height: min(820px, calc(100svh - 28px));
+        min-height: 0;
+        overflow: hidden;
+        border: 4px solid #fff;
+        color: #fff;
+        background: #050505;
+        box-shadow: 0 0 0 2px #050505, 0 0 0 4px #fff;
+      }
+
+      .report-modal__header {
+        position: sticky;
+        z-index: 2;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 62px;
+        padding: 10px 12px;
+        border-bottom: 2px solid #fff;
+        background: #050505;
+      }
+
+      .report-modal__title {
+        min-width: 0;
+        margin: 0;
+        color: #ffbd3e;
+        font-size: clamp(0.82rem, 3.5vw, 1.05rem);
+        font-weight: 400;
+        line-height: 1.5;
+      }
+
+      .report-modal__close {
+        flex: 0 0 auto;
+        min-height: 42px;
+        padding: 7px 10px;
+        border: 2px solid #fff;
+        color: #fff;
+        background: #050505;
+        cursor: pointer;
+        font-family: var(--pixel-font);
+        font-size: 0.78rem;
+      }
+
+      .report-modal__close:hover,
+      .report-modal__close:focus-visible {
+        color: #050505;
+        background: #ffbd3e;
+      }
+
+      .report-modal__close:focus-visible,
+      .report-modal__external:focus-visible {
+        outline: 3px solid #55d8ff;
+        outline-offset: 2px;
+      }
+
+      .report-modal__body {
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        gap: 10px;
+        min-height: 0;
+        padding: 12px;
+      }
+
+      .report-modal__frame {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        border: 2px solid #fff;
+        background: #fff;
+      }
+
+      .report-modal__fallback {
+        margin: 0;
+        text-align: center;
+      }
+
+      .report-modal__external {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 7px 12px;
+        border: 2px solid #fff;
+        color: #ffbd3e;
+        text-decoration: none;
+        background: #050505;
+      }
+
+      .report-modal__external:hover {
+        color: #050505;
+        background: #ffbd3e;
+      }
+
       @keyframes pageAppear {
         from {
           opacity: 0;
@@ -365,6 +532,32 @@
 
         .diagnosis-nav {
           padding: 8px 8px 10px;
+        }
+
+        .report-samples__actions {
+          grid-template-columns: 1fr;
+        }
+
+        .report-modal {
+          padding: 8px;
+        }
+
+        .report-modal__dialog {
+          height: calc(100svh - 16px);
+        }
+
+        .report-modal__header {
+          gap: 8px;
+          padding: 8px;
+        }
+
+        .report-modal__close {
+          padding-inline: 8px;
+          white-space: nowrap;
+        }
+
+        .report-modal__body {
+          padding: 8px;
         }
       }
 
@@ -456,6 +649,24 @@
                   </tbody>
                 </table>
               </div>
+              <section class="report-samples" aria-labelledby="report-samples-title">
+                <h3 id="report-samples-title">診断レポートサンプル</h3>
+                <p class="report-samples__intro">実際にお渡しする診断レポートのイメージをご覧いただけます。</p>
+                <div class="report-samples__actions">
+                  <button
+                    type="button"
+                    class="plan-mark plan-mark--basic report-sample-button"
+                    data-report-sample="basic"
+                    aria-haspopup="dialog"
+                  >診断レポート（Basic）</button>
+                  <button
+                    type="button"
+                    class="plan-mark plan-mark--pro report-sample-button"
+                    data-report-sample="pro"
+                    aria-haspopup="dialog"
+                  >診断レポート（Pro）</button>
+                </div>
+              </section>
             </article>
 
             <article class="diagnosis-page" data-diagnosis-page aria-hidden="true">
@@ -514,13 +725,60 @@
       </div>
     </main>
 
+    <div class="report-modal" data-report-modal hidden>
+      <button
+        type="button"
+        class="report-modal__backdrop"
+        data-report-backdrop
+        aria-label="診断レポートを閉じる"
+      ></button>
+      <section
+        class="report-modal__dialog"
+        data-report-dialog
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="report-modal-title"
+        tabindex="-1"
+      >
+        <header class="report-modal__header">
+          <h2 class="report-modal__title" id="report-modal-title" data-report-title>診断レポートサンプル</h2>
+          <button type="button" class="report-modal__close" data-report-close>× 閉じる</button>
+        </header>
+        <div class="report-modal__body">
+          <iframe class="report-modal__frame" data-report-frame title="診断レポートサンプル"></iframe>
+          <p class="report-modal__fallback">
+            <a class="report-modal__external" data-report-external href="#" target="_blank" rel="noopener">PDFを別画面で開く</a>
+          </p>
+        </div>
+      </section>
+    </div>
+
     <script>
       (() => {
         const pages = [...document.querySelectorAll("[data-diagnosis-page]")];
         const previousButton = document.querySelector("[data-prev]");
         const nextButton = document.querySelector("[data-next]");
         const counter = document.querySelector("[data-page-counter]");
+        const reportModal = document.querySelector("[data-report-modal]");
+        const reportDialog = document.querySelector("[data-report-dialog]");
+        const reportTitle = document.querySelector("[data-report-title]");
+        const reportFrame = document.querySelector("[data-report-frame]");
+        const reportExternal = document.querySelector("[data-report-external]");
+        const reportClose = document.querySelector("[data-report-close]");
+        const reportBackdrop = document.querySelector("[data-report-backdrop]");
+        const reportButtons = [...document.querySelectorAll("[data-report-sample]")];
+        const reportOptions = {
+          basic: {
+            title: "診断レポート（Basic）サンプル",
+            src: "assets/pdfs/iina-diagnosis-report-basic.pdf",
+          },
+          pro: {
+            title: "診断レポート（Pro）サンプル",
+            src: "assets/pdfs/iina-diagnosis-report-pro.pdf",
+          },
+        };
         let currentPage = 0;
+        let reportTrigger = null;
 
         const renderPage = () => {
           pages.forEach((page, index) => {
@@ -534,6 +792,56 @@
           previousButton.disabled = currentPage === 0;
           nextButton.textContent = currentPage === pages.length - 1 ? "スタート画面に戻る" : "つぎへ ▶";
         };
+
+        const openReport = (type, trigger) => {
+          const report = reportOptions[type];
+          if (!report) return;
+
+          reportTrigger = trigger;
+          reportTitle.textContent = report.title;
+          reportFrame.title = report.title;
+          reportFrame.src = report.src;
+          reportExternal.href = report.src;
+          reportModal.hidden = false;
+          document.body.classList.add("is-report-modal-open");
+          document.querySelector("main").inert = true;
+          reportClose.focus();
+        };
+
+        const closeReport = () => {
+          if (reportModal.hidden) return;
+
+          reportModal.hidden = true;
+          document.body.classList.remove("is-report-modal-open");
+          document.querySelector("main").inert = false;
+          reportFrame.src = "about:blank";
+          reportExternal.removeAttribute("href");
+          reportTrigger?.focus();
+          reportTrigger = null;
+        };
+
+        reportButtons.forEach((button) => {
+          button.addEventListener("click", () => openReport(button.dataset.reportSample, button));
+        });
+
+        reportClose.addEventListener("click", closeReport);
+        reportBackdrop.addEventListener("click", closeReport);
+
+        reportDialog.addEventListener("keydown", (event) => {
+          if (event.key !== "Tab") return;
+
+          const focusable = [...reportDialog.querySelectorAll("button, a[href], iframe")];
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
 
         previousButton.addEventListener("click", () => {
           if (currentPage > 0) currentPage -= 1;
@@ -551,6 +859,11 @@
         });
 
         document.addEventListener("keydown", (event) => {
+          if (!reportModal.hidden) {
+            if (event.key === "Escape") closeReport();
+            return;
+          }
+
           if (event.key === "ArrowLeft" && currentPage > 0) {
             currentPage -= 1;
             renderPage();
