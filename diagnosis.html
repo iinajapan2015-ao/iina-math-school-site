@@ -471,6 +471,45 @@
         background: #fff;
       }
 
+      .report-modal__frame[hidden],
+      .report-modal__mobile-pages[hidden] {
+        display: none;
+      }
+
+      .report-modal__mobile-pages {
+        height: 100%;
+        min-height: 0;
+        padding: 8px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        border: 2px solid #fff;
+        background: #181818;
+        scrollbar-color: #ffbd3e #181818;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .report-modal__mobile-page {
+        margin: 0 0 12px;
+      }
+
+      .report-modal__mobile-page:last-child {
+        margin-bottom: 0;
+      }
+
+      .report-modal__mobile-page img {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #fff;
+      }
+
+      .report-modal__mobile-page figcaption {
+        padding: 7px 4px 2px;
+        color: #ffbd3e;
+        font-size: 0.7rem;
+        text-align: center;
+      }
+
       .report-modal__fallback {
         margin: 0;
         text-align: center;
@@ -745,6 +784,13 @@
           <button type="button" class="report-modal__close" data-report-close>× 閉じる</button>
         </header>
         <div class="report-modal__body">
+          <div
+            class="report-modal__mobile-pages"
+            data-report-mobile-pages
+            aria-label="診断レポートの全ページ"
+            tabindex="0"
+            hidden
+          ></div>
           <iframe class="report-modal__frame" data-report-frame title="診断レポートサンプル"></iframe>
           <p class="report-modal__fallback">
             <a class="report-modal__external" data-report-external href="#" target="_blank" rel="noopener">PDFを別画面で開く</a>
@@ -763,6 +809,7 @@
         const reportDialog = document.querySelector("[data-report-dialog]");
         const reportTitle = document.querySelector("[data-report-title]");
         const reportFrame = document.querySelector("[data-report-frame]");
+        const reportMobilePages = document.querySelector("[data-report-mobile-pages]");
         const reportExternal = document.querySelector("[data-report-external]");
         const reportClose = document.querySelector("[data-report-close]");
         const reportBackdrop = document.querySelector("[data-report-backdrop]");
@@ -771,14 +818,32 @@
           basic: {
             title: "診断レポート（Basic）サンプル",
             src: "assets/pdfs/iina-diagnosis-report-basic.pdf",
+            pages: [
+              "assets/report-samples/basic-page-1.png",
+              "assets/report-samples/basic-page-2.png",
+              "assets/report-samples/basic-page-3.png",
+              "assets/report-samples/basic-page-4.png",
+            ],
           },
           pro: {
             title: "診断レポート（Pro）サンプル",
             src: "assets/pdfs/iina-diagnosis-report-pro.pdf",
+            pages: [
+              "assets/report-samples/pro-page-1.png",
+              "assets/report-samples/pro-page-2.png",
+              "assets/report-samples/pro-page-3.png",
+              "assets/report-samples/pro-page-4.png",
+              "assets/report-samples/pro-page-5.png",
+              "assets/report-samples/pro-page-6.png",
+              "assets/report-samples/pro-page-7.png",
+              "assets/report-samples/pro-page-8.png",
+            ],
           },
         };
+        const mobileReportMedia = window.matchMedia("(max-width: 768px), (pointer: coarse)");
         let currentPage = 0;
         let reportTrigger = null;
+        let activeReport = null;
 
         const renderPage = () => {
           pages.forEach((page, index) => {
@@ -793,15 +858,55 @@
           nextButton.textContent = currentPage === pages.length - 1 ? "スタート画面に戻る" : "つぎへ ▶";
         };
 
+        const renderMobileReport = (report) => {
+          const fragment = document.createDocumentFragment();
+
+          report.pages.forEach((src, index) => {
+            const page = document.createElement("figure");
+            const image = document.createElement("img");
+            const caption = document.createElement("figcaption");
+
+            page.className = "report-modal__mobile-page";
+            image.src = src;
+            image.alt = `${report.title} ${index + 1}ページ目`;
+            image.width = 993;
+            image.height = 1404;
+            image.loading = index === 0 ? "eager" : "lazy";
+            image.decoding = "async";
+            caption.textContent = `${index + 1} / ${report.pages.length}`;
+            page.append(image, caption);
+            fragment.append(page);
+          });
+
+          reportMobilePages.replaceChildren(fragment);
+          reportMobilePages.scrollTop = 0;
+        };
+
+        const showReportContent = (report) => {
+          if (mobileReportMedia.matches) {
+            reportFrame.hidden = true;
+            reportFrame.src = "about:blank";
+            reportMobilePages.hidden = false;
+            renderMobileReport(report);
+            return;
+          }
+
+          reportMobilePages.hidden = true;
+          reportMobilePages.replaceChildren();
+          reportFrame.hidden = false;
+          reportFrame.src = report.src;
+        };
+
         const openReport = (type, trigger) => {
           const report = reportOptions[type];
           if (!report) return;
 
           reportTrigger = trigger;
+          activeReport = report;
           reportTitle.textContent = report.title;
           reportFrame.title = report.title;
-          reportFrame.src = report.src;
           reportExternal.href = report.src;
+          showReportContent(report);
           reportModal.hidden = false;
           document.body.classList.add("is-report-modal-open");
           document.querySelector("main").inert = true;
@@ -815,10 +920,18 @@
           document.body.classList.remove("is-report-modal-open");
           document.querySelector("main").inert = false;
           reportFrame.src = "about:blank";
+          reportFrame.hidden = false;
+          reportMobilePages.hidden = true;
+          reportMobilePages.replaceChildren();
           reportExternal.removeAttribute("href");
           reportTrigger?.focus();
           reportTrigger = null;
+          activeReport = null;
         };
+
+        mobileReportMedia.addEventListener("change", () => {
+          if (!reportModal.hidden && activeReport) showReportContent(activeReport);
+        });
 
         reportButtons.forEach((button) => {
           button.addEventListener("click", () => openReport(button.dataset.reportSample, button));
