@@ -313,6 +313,16 @@
         font-size: clamp(1.02rem, 4.8vw, 1.35rem);
       }
 
+      .pre5-page-title-split {
+        display: grid;
+        gap: 2px;
+      }
+
+      .pre5-page-title-split strong {
+        font-size: 1.42em;
+        line-height: 1.25;
+      }
+
       .pre5-page h3 {
         color: #fff5ce;
         font-size: clamp(0.8rem, 3.55vw, 0.98rem);
@@ -370,6 +380,17 @@
         font-size: 0.76rem !important;
       }
 
+      .pre5-observation-points {
+        display: grid;
+        gap: 5px;
+        margin-top: 8px;
+        text-align: center;
+      }
+
+      .pre5-observation-points p {
+        margin: 0;
+      }
+
       .pre5-summary {
         display: grid;
         gap: 10px;
@@ -388,16 +409,20 @@
       .pre5-schedule {
         display: grid;
         gap: 4px;
-        margin: 8px 0 0;
+        width: fit-content;
+        margin: 8px auto 0;
         padding: 0;
         list-style: none;
       }
 
       .pre5-schedule li {
+        display: grid;
+        grid-template-columns: 3.6em 7.2em auto;
+        gap: 0.45em;
         color: #fff5ce;
         font-size: clamp(0.73rem, 3.1vw, 0.9rem);
         padding-left: 0;
-        text-align: center;
+        text-align: left;
         white-space: nowrap;
       }
 
@@ -446,13 +471,22 @@
         margin-top: 4px;
       }
 
-      .pre5-application-status {
-        color: #fff5ce;
-        font-size: 0.76rem !important;
+      .pre5-application-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        margin-top: 10px;
+        color: #ffbd3e;
+        text-decoration: none;
       }
 
-      .pre5-application-status[hidden] {
-        display: none;
+      .pre5-application-link:hover {
+        color: #fff45c;
+      }
+
+      .pre5-application-link:focus-visible {
+        outline: 3px solid #55d8ff;
+        outline-offset: 3px;
       }
 
       .pre5-nav {
@@ -483,6 +517,31 @@
         text-align: right;
       }
 
+      .pre5-nav__start {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        min-height: 44px;
+        padding: 8px 6px;
+        color: #ffbd3e;
+        font-size: clamp(0.7rem, 3.2vw, 0.85rem);
+        text-align: right;
+        text-decoration: none;
+      }
+
+      .pre5-nav__start:hover {
+        color: #fff45c;
+      }
+
+      .pre5-nav__start:focus-visible {
+        outline: 3px solid #55d8ff;
+        outline-offset: 2px;
+      }
+
+      .pre5-nav__start[hidden] {
+        display: none;
+      }
+
       .pre5-nav button:disabled {
         opacity: 0;
         pointer-events: none;
@@ -491,11 +550,6 @@
       .pre5-nav button:focus-visible {
         outline: 3px solid #55d8ff;
         outline-offset: 2px;
-      }
-
-      .pre5-nav button.is-application {
-        text-decoration: underline;
-        text-underline-offset: 4px;
       }
 
       @keyframes pre5PageAppear {
@@ -574,7 +628,7 @@
             <!-- PRE5 PAGE 1 START -->
             <section class="pre5-page is-active" data-pre5-page aria-hidden="false">
               <div class="pre5-copy">
-                <h2>新5年準備講座「PRE5」</h2>
+                <h2 class="pre5-page-title-split"><span>新5年準備講座</span><strong>「PRE5」</strong></h2>
                 <p class="pre5-lead"><strong>小学5年生になる前に、<br>算数の土台を「意味」からつくる。</strong></p>
                 <p>PRE5は、現小学4年生を対象とした<strong>中学受験算数の新5年準備講座</strong>です。</p>
                 <p>小学5年生になると、割合・比・速さ・図形など、知識を組み合わせて考える問題が増えていきます。</p>
@@ -595,13 +649,12 @@
                 <p>ホームページや合格実績だけでは、授業で子どもが<strong>何を考えさせられているのか</strong>までは分かりません。</p>
                 <p>PRE5で扱う内容は、小4「光コース」でも最重要分野として実際に指導している内容です。</p>
                 <p>見学の際は、問題の難しさだけでなく、</p>
-                <ul>
-                  <li><strong>先生が何を問いかけているか</strong></li>
-                  <li><strong>子どもにどこまで考えさせているか</strong></li>
-                  <li><strong>正解した後に何をさらに考えさせているか</strong></li>
-                </ul>
-                <p class="pre5-lead"><strong>来年度、IINAでどんな算数を学ぶのか。<br>実際の授業を見て、ご判断ください。</strong></p>
-                <p class="pre5-note">※現小学3年生のお子さまの受講ではなく、保護者の方の見学となります。</p>
+                <div class="pre5-observation-points">
+                  <p><strong>先生が何を問いかけているか</strong></p>
+                  <p><strong>子どもにどこまで考えさせているか</strong></p>
+                  <p><strong>正解した後に何をさらに考えさせているか</strong></p>
+                </div>
+                <p class="pre5-lead"><strong>来年度、IINA算数教室でどんな算数を学ぶのか。<br>実際の授業を見て、ご判断ください。</strong></p>
               </div>
             </section>
             <!-- PRE5 PAGE 2 END -->
@@ -612,11 +665,11 @@
                 <h2>開催概要</h2>
                 <p class="pre5-lead"><strong>PRE5 全5回</strong>｜2026年9月〜2027年1月</p>
                 <ol class="pre5-schedule">
-                  <li><strong>第1回　9/28（月）　17:30〜20:00</strong></li>
-                  <li><strong>第2回　10/26（月）　17:30〜20:00</strong></li>
-                  <li><strong>第3回　11/30（月）　17:30〜20:00</strong></li>
-                  <li><strong>第4回　12/21（月）　17:30〜20:00</strong></li>
-                  <li><strong>第5回　1/25（月）　17:30〜20:00</strong></li>
+                  <li><strong>第1回</strong><strong>9/28（月）</strong><strong>17:30〜20:00</strong></li>
+                  <li><strong>第2回</strong><strong>10/26（月）</strong><strong>17:30〜20:00</strong></li>
+                  <li><strong>第3回</strong><strong>11/30（月）</strong><strong>17:30〜20:00</strong></li>
+                  <li><strong>第4回</strong><strong>12/21（月）</strong><strong>17:30〜20:00</strong></li>
+                  <li><strong>第5回</strong><strong>1/25（月）</strong><strong>17:30〜20:00</strong></li>
                 </ol>
                 <div class="pre5-summary">
                   <section class="pre5-summary__group">
@@ -631,7 +684,6 @@
                     <h3>受講料</h3>
                     <p class="pre5-highlight"><strong>第1回 無料｜第2回以降 12,500円／回</strong></p>
                     <p>継続受講の場合、2回目受講時に<strong>入会金22,000円</strong>を頂戴します。入会金は<strong>1家庭につき1回のみ</strong>で、本講座への進級時も再徴収しません。</p>
-                    <p class="pre5-note">※現在「光コース」を受講しているご家庭はPRE5を無料で受講いただけます。</p>
                   </section>
                 </div>
               </div>
@@ -684,8 +736,8 @@
                   <h3>PRE5 第1回</h3>
                   <p><strong>2026年9月28日（月）｜17:30〜20:00｜初回無料</strong></p>
                   <p class="pre5-lead"><strong>新5年になる前に、<br>算数を「意味」から考える準備を始めませんか？</strong></p>
-                  <p class="pre5-application-status" data-application-status role="status" hidden>PRE5専用の申込先は現在準備中です。</p>
                 </section>
+                <a class="pre5-application-link" href="contact.html">▶PRE5に申し込む</a>
               </div>
             </section>
             <!-- PRE5 PAGE 5 END -->
@@ -694,6 +746,7 @@
           <nav class="pre5-nav" aria-label="PRE5案内のページ操作">
             <button type="button" data-prev disabled>◀ まえにもどる</button>
             <button type="button" data-next>つぎへ ▶</button>
+            <a class="pre5-nav__start" data-start-link href="index.html" hidden>スタート画面に戻る</a>
           </nav>
         </section>
       </div>
@@ -704,8 +757,8 @@
         const pages = [...document.querySelectorAll("[data-pre5-page]")];
         const previousButton = document.querySelector("[data-prev]");
         const nextButton = document.querySelector("[data-next]");
+        const startLink = document.querySelector("[data-start-link]");
         const counter = document.querySelector("[data-page-counter]");
-        const applicationStatus = document.querySelector("[data-application-status]");
         let currentPage = 0;
 
         const renderPage = () => {
@@ -719,10 +772,8 @@
           const isLastPage = currentPage === pages.length - 1;
           counter.textContent = `${currentPage + 1} / ${pages.length}`;
           previousButton.disabled = currentPage === 0;
-          nextButton.textContent = isLastPage ? "PRE5に申し込む ▶" : "つぎへ ▶";
-          nextButton.classList.toggle("is-application", isLastPage);
-          nextButton.title = isLastPage ? "PRE5専用の申込先は現在準備中です" : "";
-          applicationStatus.hidden = true;
+          nextButton.hidden = isLastPage;
+          startLink.hidden = !isLastPage;
         };
 
         previousButton.addEventListener("click", () => {
@@ -736,10 +787,7 @@
           if (currentPage < pages.length - 1) {
             currentPage += 1;
             renderPage();
-            return;
           }
-
-          applicationStatus.hidden = false;
         });
 
         document.addEventListener("keydown", (event) => {
