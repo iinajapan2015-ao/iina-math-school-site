@@ -26,7 +26,6 @@
     <meta name="twitter:title" content="小学4年生対象｜中学受験算数・新5年準備講座「PRE5」">
     <meta name="twitter:description" content="整数・素数・分数、公倍数・公約数、N進数、割合、比を暗記ではなく意味から学ぶ、新5年準備講座です。2026年9月28日東京開講。初回無料。">
     <meta name="twitter:image" content="https://iinamath.com/assets/images/iina-og-image.png">
-    <link rel="stylesheet" href="styles.css?v=website-v11-pre5-five-lines">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -191,6 +190,82 @@
       }
     </script>
     <style>
+      :root {
+        --orange-50: #fff4dc;
+        --orange-100: #ffe0a3;
+        --orange-300: #ffb13b;
+        --orange-500: #f47a16;
+        --orange-700: #b94313;
+        --brown-900: #3d2418;
+        --cream: #fffaf0;
+        --mint: #68c79a;
+        --sky: #8fd2ff;
+        --ink: #24140f;
+        --pixel-font: "DotGothic16", "MS Gothic", "ＭＳ ゴシック", monospace;
+      }
+
+      @font-face {
+        font-family: "DotGothic16";
+        src:
+          url("assets/fonts/DotGothic16-Regular.woff2") format("woff2"),
+          url("assets/fonts/DotGothic16-Regular.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 64px;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--orange-50);
+        font-family: var(--pixel-font);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        overflow: hidden;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font-family: inherit;
+      }
+
+      button,
+      input,
+      select,
+      textarea,
+      body {
+        letter-spacing: 0;
+      }
+
+      body,
+      button,
+      input,
+      select,
+      textarea {
+        font-variant-ligatures: none;
+      }
+
+      :where(a, button, input, select, textarea, summary):focus-visible {
+        outline: 3px solid #ffbd3e;
+        outline-offset: 3px;
+      }
+
       html,
       body {
         min-height: 100%;
@@ -610,6 +685,15 @@
       }
 
       @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 1ms !important;
+        }
+
         .pre5-page.is-active {
           animation: none;
         }
