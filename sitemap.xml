@@ -97,6 +97,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://iinamath.com/pre5.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://iinamath.com/pricing.html</loc>
     <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>

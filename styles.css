@@ -378,6 +378,21 @@ textarea {
   color: #ffbd3e;
 }
 
+.pre5-notice__link {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pre5-notice__link:hover {
+  color: #fff45c;
+}
+
+.pre5-notice__link:focus-visible {
+  outline: 3px solid #55d8ff;
+  outline-offset: 3px;
+}
+
 @media (max-width: 430px) {
   .pre5-notice {
     gap: 7px;
