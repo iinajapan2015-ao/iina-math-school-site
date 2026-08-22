@@ -77,11 +77,33 @@
 
     <section class="title-screen" data-title-screen aria-hidden="true">
       <section class="title-content">
-        <div class="battle-status" aria-hidden="true">
+        <!-- PRE5期間終了後は、この要素の hidden を外し、直下の .pre5-notice に hidden を付けて復元します。 -->
+        <div class="battle-status battle-status--stats" aria-hidden="true" hidden>
           <span>ひらめき <b>H 100</b></span>
           <span>かんがえる <b>M 100</b></span>
           <span>さんすう <b>LV∞</b></span>
         </div>
+
+        <!-- PRE5期間限定告知：専用LP公開後は .pre5-notice__pending を /pre5/ へのリンクへ変更します。 -->
+        <section class="battle-status pre5-notice" aria-label="新5年準備講座PRE5のお知らせ">
+          <div class="pre5-notice__eyebrow">
+            <span class="new-badge">NEW</span>
+            <span class="pre5-notice__quest">NEW QUEST</span>
+          </div>
+          <p class="pre5-notice__course">
+            <span class="pre5-notice__target">現小学4年生対象</span>
+            <strong>新5年準備講座「PRE5」</strong>
+          </p>
+          <p class="pre5-notice__meta">
+            <span>9/28（月）東京開催</span>
+            <span>｜ 初回無料</span>
+            <span class="pre5-notice__audience">（現小学3年生の保護者見学も受付中）</span>
+          </p>
+          <p class="pre5-notice__pending" aria-disabled="true">
+            <span aria-hidden="true">▶</span>
+            PRE5の詳細を見る（準備中）
+          </p>
+        </section>
 
         <h1 class="title-logo-frame">
           <img class="title-logo" src="assets/images/iina-title-logo.webp" alt="IINA算数教室" width="1536" height="1024" decoding="async" fetchpriority="high">
