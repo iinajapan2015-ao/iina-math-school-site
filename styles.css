@@ -226,7 +226,11 @@ textarea {
   overflow-y: auto;
   padding: 18px;
   color: #fff;
-  background: #f6b65f;
+  background-color: #f6b65f;
+  background-image: url("assets/images/top-rpg-landscape.webp");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 350ms ease, transform 350ms ease;
@@ -247,6 +251,12 @@ textarea {
 .title-screen.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 719px) {
+  .title-screen {
+    background-position: 68% center;
+  }
 }
 
 .title-content {
