@@ -224,6 +224,49 @@
         text-align: center;
       }
 
+      .diagnosis-price--original {
+        margin-bottom: 2px !important;
+      }
+
+      .diagnosis-price--original span {
+        position: relative;
+        display: inline-block;
+      }
+
+      .diagnosis-price--original span::before,
+      .diagnosis-price--original span::after {
+        position: absolute;
+        left: -0.08em;
+        right: -0.08em;
+        content: "";
+        border-top: 2px solid #ff79b5;
+        pointer-events: none;
+      }
+
+      .diagnosis-price--original span::before {
+        top: 45%;
+      }
+
+      .diagnosis-price--original span::after {
+        top: 58%;
+      }
+
+      .diagnosis-sale-price {
+        margin: 0 !important;
+        color: #ff79b5;
+        font-size: clamp(1.15rem, 5.5vw, 1.5rem) !important;
+        line-height: 1.35;
+        text-align: center;
+      }
+
+      .diagnosis-sale-deadline {
+        margin: 0 0 10px !important;
+        color: #ff9bc8;
+        font-size: clamp(0.72rem, 3.2vw, 0.9rem) !important;
+        line-height: 1.45;
+        text-align: center;
+      }
+
       .plan-mark {
         display: block;
         width: min(100%, 360px);
@@ -645,7 +688,9 @@
             <article class="diagnosis-page" data-diagnosis-page aria-hidden="true">
               <span class="plan-mark plan-mark--basic">BASIC PLAN</span>
               <h2>Basicプラン</h2>
-              <p class="diagnosis-price">5,500円（税込）</p>
+              <p class="diagnosis-price diagnosis-price--original"><span>5,500円（税込）</span></p>
+              <p class="diagnosis-sale-price">1,650円</p>
+              <p class="diagnosis-sale-deadline">令和6年9月30日まで</p>
               <p class="diagnosis-lead">算数の現在地と、これから優先すべき課題を確認したい方におすすめです。</p>
               <h3>プラン内容</h3>
               <ul>
@@ -660,7 +705,9 @@
             <article class="diagnosis-page" data-diagnosis-page aria-hidden="true">
               <span class="plan-mark plan-mark--pro">PRO PLAN</span>
               <h2>Proプラン</h2>
-              <p class="diagnosis-price">19,800円（税込）</p>
+              <p class="diagnosis-price diagnosis-price--original"><span>19,800円（税込）</span></p>
+              <p class="diagnosis-sale-price">5,940円</p>
+              <p class="diagnosis-sale-deadline">令和6年9月30日まで</p>
               <p class="diagnosis-lead">答案を詳しく分析し、具体的な学習方法まで相談したい方におすすめです。</p>
               <h3>プラン内容</h3>
               <ul>
@@ -684,7 +731,7 @@
                     <tr><th>内容</th><th>Basic</th><th>Pro</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>料金（税込）</td><td>5,500円</td><td>19,800円</td></tr>
+                    <tr><td>料金（税込）</td><td>今だけ1,650円</td><td>今だけ5,940円</td></tr>
                     <tr><td>採点・分野別習得度</td><td>○</td><td>○</td></tr>
                     <tr><td>強み・優先課題</td><td>○</td><td>○</td></tr>
                     <tr><td>誤答原因分析</td><td>簡易</td><td>詳細</td></tr>
