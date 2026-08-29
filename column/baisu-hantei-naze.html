@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SCVS0X3EVG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SCVS0X3EVG');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>倍数判定法はなぜ成り立つのか｜2・5・4・3・9・11の理由｜IINA算数教室</title>
+    <meta name="description" content="2・5・4・3・9・11の倍数判定法は、なぜ成り立つのでしょうか。一の位、下二桁、各位の和、交互の差を見る理由を、十進法の位取りからIINA算数教室が解説します。">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#f6b65f">
+    <link rel="canonical" href="https://iinamath.com/column/baisu-hantei-naze.html">
+    <link rel="icon" type="image/png" sizes="128x128" href="../assets/images/favicon-128.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+    <link rel="preload" href="../assets/fonts/DotGothic16-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="IINA算数教室">
+    <meta property="og:title" content="倍数判定法はなぜ成り立つのか｜2・5・4・3・9・11の理由｜IINA算数教室">
+    <meta property="og:description" content="2・5・4・3・9・11の倍数判定法は、なぜ成り立つのでしょうか。一の位、下二桁、各位の和、交互の差を見る理由を、十進法の位取りからIINA算数教室が解説します。">
+    <meta property="og:url" content="https://iinamath.com/column/baisu-hantei-naze.html">
+    <meta property="og:image" content="https://iinamath.com/assets/images/iina-og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="IINA算数教室 算数コラム">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="倍数判定法はなぜ成り立つのか｜2・5・4・3・9・11の理由｜IINA算数教室">
+    <meta name="twitter:description" content="2・5・4・3・9・11の倍数判定法は、なぜ成り立つのでしょうか。一の位、下二桁、各位の和、交互の差を見る理由を、十進法の位取りからIINA算数教室が解説します。">
+    <meta name="twitter:image" content="https://iinamath.com/assets/images/iina-og-image.png">
+    <link rel="stylesheet" href="../styles.css?v=column-4">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Article",
+            "@id": "https://iinamath.com/column/baisu-hantei-naze.html#article",
+            "headline": "倍数判定法はなぜ成り立つのか",
+            "description": "2・5・4・3・9・11の倍数判定法は、なぜ成り立つのでしょうか。一の位、下二桁、各位の和、交互の差を見る理由を、十進法の位取りからIINA算数教室が解説します。",
+            "url": "https://iinamath.com/column/baisu-hantei-naze.html",
+            "inLanguage": "ja",
+            "author": {
+              "@type": "Person",
+              "name": "榎本圭吾",
+              "url": "https://iinamath.com/greeting.html"
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://iinamath.com/column/baisu-hantei-naze.html"
+            },
+            "isPartOf": { "@id": "https://iinamath.com/#website" },
+            "publisher": { "@id": "https://iinamath.com/#organization" },
+            "image": "https://iinamath.com/assets/images/iina-og-image.png"
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://iinamath.com/#organization",
+            "name": "IINA算数教室",
+            "url": "https://iinamath.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://iinamath.com/assets/images/iina-title-logo.webp"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="is-loaded column-page">
+    <header class="column-sitebar">
+      <div class="column-sitebar__inner">
+        <a class="column-sitebar__home" href="/">
+          <img src="../assets/images/iina-mark-transparent-v1.png" alt="" width="1204" height="1306">
+          <span>IINA算数教室</span>
+        </a>
+        <p class="column-sitebar__label">算数コラム</p>
+      </div>
+    </header>
+
+    <main class="column-main">
+      <section class="column-hero-band" aria-labelledby="article-title">
+        <div class="column-container">
+          <header class="column-hero">
+            <p class="column-hero__eyebrow">秘伝の書 No.008</p>
+            <h1 id="article-title">倍数判定法はなぜ成り立つのか</h1>
+          </header>
+        </div>
+      </section>
+
+      <div class="column-reading-band">
+        <article class="column-article">
+          <section>
+            <h2>判定法を覚える前に、数の仕組みを見る</h2>
+            <p>「一の位が偶数なら2の倍数」「各位の数字を足して9の倍数なら、元の数も9の倍数」。倍数判定法は便利ですが、項目を丸暗記すると、数字を取り違えたときに確かめられません。</p>
+            <p>判定法は、私たちが使う十進法の位取りと、割る数の性質から生まれています。理由が分かれば、別々に見える規則がつながります。</p>
+          </section>
+
+          <section>
+            <h2>2と5は、なぜ一の位だけで分かるのか</h2>
+            <p>どんな整数も、「10の倍数」と「一の位」に分けられます。たとえば347なら、340+7です。</p>
+            <p>10は2でも5でも割り切れます。そのため340の部分は必ず2の倍数であり、5の倍数でもあります。残る一の位だけを見れば、元の数が2や5で割り切れるか判断できます。</p>
+            <ul>
+              <li>2の倍数：一の位が0・2・4・6・8</li>
+              <li>5の倍数：一の位が0・5</li>
+            </ul>
+            <p>一の位を覚えるだけでなく、<strong>10のまとまりがすでに割り切れるから、一の位だけが残る</strong>と捉えることが大切です。</p>
+          </section>
+
+          <section>
+            <h2>4は、なぜ下二桁を見るのか</h2>
+            <p>100は4で割り切れます。したがって、三桁以上の数に含まれる100のまとまりは、4の倍数かどうかの判定に影響しません。</p>
+            <p>たとえば7316は、7300+16と分けられます。7300は100の倍数なので必ず4で割り切れます。あとは下二桁の16が4で割り切れるかを見ればよいのです。</p>
+            <p><strong>100が4の倍数だから、100未満の部分である下二桁だけを確認する。</strong>これが4の倍数判定の理由です。</p>
+          </section>
+
+          <section>
+            <h2>3と9は、なぜ各位の和を見るのか</h2>
+            <p>たとえば345を位ごとに表すと、3×100+4×10+5です。</p>
+            <p>10は、3で割ると1余り、9で割っても1余ります。100や1000も同じく、3または9で割った余りは1です。</p>
+            <p>そのため、3×100+4×10+5を3や9で割ったときの余りは、3×1+4×1+5、つまり3+4+5を割ったときの余りと同じになります。</p>
+            <div class="column-quote">
+              <p>345 → 3+4+5 = 12</p>
+              <p>12は3の倍数なので、345も3の倍数</p>
+              <p>12は9の倍数ではないので、345も9の倍数ではない</p>
+            </div>
+            <p>各位の和を見るのは、10、100、1000を3や9で割った余りがすべて1になるからです。</p>
+          </section>
+
+          <section>
+            <h2>11は、なぜ交互に足し引きするのか</h2>
+            <p>10は11より1小さい数です。11で割った余りを考えると、10は「−1」と同じ働きをします。すると100は（−1）×（−1）で1、1000は再び−1というように、位が上がるたびに1と−1が交互に現れます。</p>
+            <p>だから、各位の数字を右から交互に足し引きした結果が11の倍数なら、元の数も11の倍数になります。</p>
+            <div class="column-quote">
+              <p>2728 → 8−2+7−2 = 11</p>
+              <p>11は11の倍数なので、2728も11の倍数</p>
+            </div>
+            <p>「交互に計算する」という形だけを見ると不思議ですが、10を11との関係で見ると理由が現れます。</p>
+          </section>
+
+          <section>
+            <h2>判定法は、位取りを利用した短い計算</h2>
+            <p>2・5・4・3・9・11の判定法は、互いに無関係な暗記項目ではありません。</p>
+            <ul>
+              <li>10が割り切れるなら一の位を見る</li>
+              <li>100が割り切れるなら下二桁を見る</li>
+              <li>10の余りが1なら各位の和を見る</li>
+              <li>10を−1と見られるなら交互の差を見る</li>
+            </ul>
+            <p>どの判定法も、元の数を扱いやすいまとまりに分け、割り切れる部分を先に取り除いています。理由から理解すると、判定法は暗記ではなく数の見方になります。</p>
+          </section>
+
+          <section>
+            <h2>PRE5で、数の性質を次の学びへつなげる</h2>
+            <p>倍数や約数、素数といった数の性質は、5年生以降の分数や公倍数・公約数を考える土台です。新5年準備講座「PRE5」では、やり方だけでなく「なぜそうなるのか」を考えながら学びます。</p>
+            <div class="column-cta-wrap">
+              <a class="column-cta" href="../pre5.html">▶ 新5年準備講座「PRE5」を見る</a>
+            </div>
+          </section>
+
+          <section class="column-related" aria-labelledby="related-heading">
+            <h2 id="related-heading">関連する秘伝の書</h2>
+            <a href="keisan-machigaeru.html">
+              <span class="column-related__number">秘伝の書 No.006</span>
+              <span class="column-related__title">計算問題を間違える子に「もっと丁寧に計算しなさい」と言っても変わらない理由</span>
+            </a>
+          </section>
+
+          <nav class="column-route" aria-label="戻る">
+            <a class="column-route-link" href="/column/">← 秘伝の書一覧へ戻る</a>
+          </nav>
+        </article>
+      </div>
+    </main>
+
+    <footer class="column-footer"><p>IINA算数教室</p></footer>
+  </body>
+</html>
