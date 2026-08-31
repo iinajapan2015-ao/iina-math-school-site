@@ -444,14 +444,36 @@ textarea {
 }
 
 .title-logo-frame {
-  display: grid;
-  place-items: center;
-  height: clamp(108px, 32vw, 190px);
+  position: relative;
+  height: clamp(140px, 39vw, 230px);
   margin: 4px 0 0;
   overflow: hidden;
 }
 
+.title-logo-kicker {
+  position: absolute;
+  top: clamp(3px, 1.2vw, 8px);
+  left: 50%;
+  z-index: 1;
+  color: #fff7dc;
+  font-family: var(--pixel-font);
+  font-size: clamp(0.72rem, 2.4vw, 1rem);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow:
+    2px 0 0 #2d211c,
+    -2px 0 0 #2d211c,
+    0 2px 0 #2d211c,
+    0 -2px 0 #2d211c;
+  transform: translateX(-50%);
+}
+
 .title-logo {
+  position: absolute;
+  top: clamp(28px, 6.2vw, 36px);
+  left: 50%;
   display: block;
   width: min(146%, 920px);
   max-width: none;
@@ -459,7 +481,7 @@ textarea {
   object-fit: contain;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  transform: translateY(-31%);
+  transform: translate(-50%, -31%);
 }
 
 .title-stage {
