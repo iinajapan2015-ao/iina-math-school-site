@@ -452,23 +452,26 @@ textarea {
 
 .title-logo-kicker {
   position: absolute;
-  top: clamp(45px, 4.85vw, 62px);
+  top: 27%;
   left: 50%;
   z-index: 1;
   color: #ff7a18;
   font-family: var(--pixel-font);
-  font-size: clamp(0.82rem, 2.5vw, 1.125rem);
+  font-size: clamp(13px, 2.5vw, 18px);
   font-weight: 700;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
-  -webkit-text-stroke: clamp(1px, 0.16vw, 2px) #24242b;
-  paint-order: stroke fill;
+  -webkit-text-stroke: 0;
   text-shadow:
     1px 0 0 #24242b,
     -1px 0 0 #24242b,
     0 1px 0 #24242b,
-    0 -1px 0 #24242b;
+    0 -1px 0 #24242b,
+    1px 1px 0 #24242b,
+    -1px 1px 0 #24242b,
+    1px -1px 0 #24242b,
+    -1px -1px 0 #24242b;
   transform: translateX(-50%);
 }
 
