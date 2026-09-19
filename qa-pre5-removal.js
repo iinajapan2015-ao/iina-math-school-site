@@ -5,7 +5,10 @@ const path = require('path');
 (async () => {
   const outDir = path.join(__dirname, 'qa-output');
   fs.mkdirSync(outDir, { recursive: true });
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({
+    headless: true,
+    executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+  });
   const checks = [];
   const errors = [];
   const viewports = [
