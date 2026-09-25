@@ -2482,24 +2482,42 @@ textarea {
   font-weight: 700;
 }
 
+.admission-hero__focus {
+  margin: 18px 0 0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.7;
+  text-shadow: 2px 2px 0 #050505;
+}
+
 .admission-hero__targets {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 4px 0;
-  margin: 22px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: min(100%, 640px);
+  margin: 18px auto 0;
   padding: 0;
   list-style: none;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   line-height: 1.6;
 }
 
 .admission-hero__targets li {
-  padding-inline: 10px;
+  display: grid;
+  min-height: 40px;
+  place-items: center;
+  padding: 6px 7px;
+  color: #fff;
+  background: rgba(5, 5, 5, 0.72);
+  border: 2px solid rgba(255, 255, 255, 0.78);
 }
 
-.admission-hero__targets li + li {
-  border-left: 2px solid #ffcf64;
+.admission-hero__targets .admission-hero__target--primary {
+  color: #050505;
+  background: #ffcf64;
+  border-color: #fff;
+  font-weight: 700;
 }
 
 .admission-actions {
@@ -2597,6 +2615,86 @@ textarea {
   color: #ffcf64;
 }
 
+.admission-featured {
+  background: #fff4dc;
+}
+
+.admission-featured__intro,
+.admission-schedule__intro {
+  width: min(100%, 760px);
+  margin: -4px auto 26px;
+  font-weight: 700;
+  line-height: 1.85;
+  text-align: center;
+}
+
+.admission-featured-list {
+  display: grid;
+  gap: 22px;
+}
+
+.admission-featured-card {
+  --featured-color: #e69a00;
+  position: relative;
+  padding: 22px 18px;
+  background: #fffaf0;
+  border: 4px solid #24140f;
+  box-shadow: 8px 8px 0 var(--featured-color);
+}
+
+.admission-featured-card--sea {
+  --featured-color: #238ebd;
+}
+
+.admission-featured-card__label {
+  width: fit-content;
+  margin: 0 0 13px;
+  padding: 5px 9px;
+  color: #fff;
+  background: #24140f;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.admission-featured-card h3 {
+  margin: 0;
+  color: var(--featured-color);
+  font-size: clamp(1.45rem, 7vw, 2rem);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.admission-featured-card__copy {
+  margin: 16px 0 20px;
+  font-weight: 600;
+  line-height: 1.85;
+}
+
+.admission-featured-card dl {
+  display: grid;
+  grid-template-columns: 4.5em minmax(0, 1fr);
+  gap: 10px 13px;
+  margin: 0;
+  padding-top: 17px;
+  border-top: 3px solid var(--featured-color);
+  line-height: 1.6;
+}
+
+.admission-featured-card dt {
+  font-weight: 700;
+}
+
+.admission-featured-card dd {
+  margin: 0;
+}
+
+.admission-featured-card dd:last-child {
+  color: var(--featured-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 .admission-schedule {
   background: #ffd7b8;
 }
@@ -2610,6 +2708,25 @@ textarea {
   margin: 0 0 18px;
   font-size: 1.2rem;
   line-height: 1.4;
+}
+
+.admission-course-card__status {
+  display: none;
+}
+
+.admission-course-card--primary {
+  border-width: 5px;
+}
+
+.admission-course-card--primary .admission-course-card__status {
+  display: block;
+  width: fit-content;
+  margin: 0 0 11px;
+  padding: 4px 8px;
+  color: #fff;
+  background: #24140f;
+  font-size: 0.72rem;
+  font-weight: 700;
 }
 
 .admission-course-card dl {
@@ -2688,20 +2805,6 @@ textarea {
   margin: 0;
 }
 
-.admission-consult {
-  color: #fff;
-  background: #24140f;
-  border-color: #fff;
-}
-
-.admission-consult .admission-section__heading p {
-  color: #ffbd3e;
-}
-
-.admission-consult .admission-lead {
-  text-align: center;
-}
-
 .admission-final {
   padding: 56px 20px 62px;
   color: #24140f;
@@ -2758,11 +2861,20 @@ textarea {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .admission-hero__targets {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    font-size: 0.84rem;
+  }
+
   .admission-section {
     padding: 84px 32px;
   }
 
   .admission-course-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admission-featured-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -2777,12 +2889,8 @@ textarea {
     padding-block: 48px 54px;
   }
 
-  .admission-hero__targets {
-    font-size: 0.8rem;
-  }
-
   .admission-hero__targets li {
-    padding-inline: 7px;
+    padding-inline: 5px;
   }
 
   .admission-cta {
