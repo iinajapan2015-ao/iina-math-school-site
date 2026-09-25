@@ -2748,7 +2748,7 @@ textarea {
     gap: 0;
   }
 
-  .admission-hero__positioning span + span::before {
+  .admission-hero__positioning > * + *::before {
     margin-inline: 14px;
     color: #ffcf64;
     content: "×";
