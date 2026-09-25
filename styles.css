@@ -299,6 +299,112 @@ textarea {
   font-size: 0.92em;
 }
 
+.admission-notice {
+  grid-template-columns: 1fr;
+  gap: 3px;
+  height: 158px;
+  min-height: 158px;
+  padding: 8px 16px;
+}
+
+.admission-notice p {
+  margin: 0;
+}
+
+.admission-notice__lead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 0;
+  color: #fff;
+  font-size: clamp(0.78rem, 2.7vw, 0.96rem);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.admission-notice__lead .new-badge {
+  flex: 0 0 auto;
+}
+
+.admission-notice__year {
+  color: #fff5ce;
+  font-size: clamp(0.72rem, 2.55vw, 0.88rem);
+  line-height: 1.2;
+}
+
+.admission-notice__course {
+  color: #fff5ce;
+  line-height: 1.05;
+}
+
+.admission-notice__course strong {
+  color: #ffbd3e;
+  font-size: clamp(1.45rem, 5.4vw, 1.9rem);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.admission-notice__meta {
+  color: #fff;
+  font-size: clamp(0.65rem, 2.35vw, 0.78rem);
+  line-height: 1.45;
+}
+
+.admission-notice__audience {
+  color: #fff5ce;
+  font-size: clamp(0.65rem, 2.35vw, 0.78rem);
+  line-height: 1.35;
+}
+
+.admission-notice__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 24px;
+  color: #fff;
+  font-size: clamp(0.68rem, 2.5vw, 0.82rem);
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.admission-notice__link > span {
+  color: #ffbd3e;
+}
+
+.admission-notice__link:hover {
+  color: #fff45c;
+}
+
+.admission-notice__link:focus-visible {
+  outline: 3px solid #55d8ff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 430px) {
+  .admission-notice {
+    gap: 3px;
+    height: 166px;
+    min-height: 166px;
+    padding: 8px 7px;
+  }
+
+  .admission-notice__lead {
+    gap: 4px;
+    font-size: 0.78rem;
+  }
+
+  .admission-notice__year {
+    font-size: 0.68rem;
+  }
+
+  .admission-notice__meta,
+  .admission-notice__audience {
+    font-size: 0.62rem;
+  }
+}
+
 .title-logo-frame {
   display: grid;
   place-items: center;
