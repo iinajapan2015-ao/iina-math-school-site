@@ -350,6 +350,12 @@
         font-size: clamp(1.2rem, 5.2vw, 1.55rem);
       }
 
+      .admission-facts dd:last-child small {
+        color: #fff5ce;
+        font-size: 0.55em;
+        white-space: nowrap;
+      }
+
       .admission-course-link {
         display: flex;
         align-items: center;
@@ -623,17 +629,14 @@
 
             <section class="admission-step" data-admission-page aria-hidden="true">
               <h2>その他のコース</h2>
-              <div class="admission-other-grid">
-                <section class="admission-course-panel admission-course-panel--personal">
-                  <h3>パーソナル指導</h3>
-                  <dl class="admission-facts">
-                    <dt>授業日</dt><dd>要相談</dd>
-                    <dt>時間</dt><dd>1回90分・月2回</dd>
-                    <dt>月額</dt><dd>39,600円</dd>
-                  </dl>
-                  <a class="admission-course-link" href="personal.html"><span aria-hidden="true">▶</span> パーソナル指導の詳細を見る</a>
-                </section>
-              </div>
+              <section class="admission-course-panel admission-course-panel--personal">
+                <h3>パーソナル指導</h3>
+                <dl class="admission-facts">
+                  <dt>時間</dt><dd>90分／回</dd>
+                  <dt>料金</dt><dd>19,800円 <small>（税込）／回</small></dd>
+                </dl>
+                <a class="admission-course-link" href="personal.html"><span aria-hidden="true">▶</span> パーソナル指導の詳細を見る</a>
+              </section>
             </section>
 
             <section class="admission-step" data-admission-page aria-hidden="true">
