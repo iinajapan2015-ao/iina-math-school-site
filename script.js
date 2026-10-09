@@ -320,6 +320,11 @@ if (movieButton && movieMenu) {
     movieMenu.setAttribute("aria-hidden", "false");
     document.body.classList.add("is-menu-open");
     window.requestAnimationFrame(() => movieCloseButton?.focus());
+    if (movieVideo) {
+      // 音なしで自動再生（音はプレーヤーのスピーカーボタンでON）
+      movieVideo.muted = true;
+      movieVideo.play().catch(() => {});
+    }
     if (typeof gtag === "function") gtag("event", "guide_movie_open");
   };
 
