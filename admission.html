@@ -404,6 +404,16 @@
         margin-top: 6px;
       }
 
+      .admission-video {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
+        margin-top: 10px;
+        background: #000;
+        border: 2px solid #fff;
+      }
+
       .admission-actions {
         display: grid;
         gap: 10px;
@@ -643,9 +653,13 @@
               <h2>オンライン指導・受講相談</h2>
               <p class="admission-lead"><strong>中学受験算数専門 × オンライン指導</strong></p>
               <p>IINA算数教室は、オンライン指導を主軸に、中学受験算数専門の授業を行います。</p>
-              <section class="admission-video-note" data-future-video-slot>
-                <h3>授業・指導について</h3>
-                <p>授業・指導については、今後動画でもご紹介していきます。</p>
+              <section class="admission-video-note">
+                <h3>教室案内ムービー（約1分）</h3>
+                <video class="admission-video" controls playsinline preload="none" poster="assets/videos/iina-guide-poster.jpg">
+                  <source src="assets/videos/iina-guide.mp4" type="video/mp4">
+                  お使いのブラウザでは動画を再生できません。
+                </video>
+                <p>授業・指導については、今後も動画でご紹介していきます。</p>
               </section>
               <div class="admission-actions" aria-label="2027年度の受講相談">
                 <a id="admission-form-cta" class="admission-action" href="contact.html#contact-form" data-admission-cta="form">フォームから受講について相談する</a>

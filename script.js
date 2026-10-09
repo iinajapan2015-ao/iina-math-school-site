@@ -283,3 +283,64 @@ if (contactForm) {
     }
   });
 }
+
+const movieButton = document.querySelector("[data-movie-button]");
+const movieMenu = document.querySelector("[data-movie-menu]");
+
+if (movieButton && movieMenu) {
+  const movieVideo = movieMenu.querySelector("[data-movie-video]");
+  const movieCloseButtons = [...movieMenu.querySelectorAll("[data-movie-close]")];
+  const movieCloseButton = movieMenu.querySelector(".start-menu__close");
+  const movieReturnButton = movieMenu.querySelector(".dungeon-menu__return");
+
+  // 縦長の画面（スマホ）では縦型、それ以外は横型の動画を読み込む
+  const pickMovieSource = () => {
+    if (!movieVideo) return;
+    const isTall = window.matchMedia("(max-width: 719px) and (orientation: portrait)").matches;
+    const src = isTall ? movieVideo.dataset.tallSrc : movieVideo.dataset.wideSrc;
+    const poster = isTall ? movieVideo.dataset.tallPoster : movieVideo.dataset.widePoster;
+    movieVideo.classList.toggle("is-tall", isTall);
+    if (movieVideo.getAttribute("src") !== src) {
+      movieVideo.setAttribute("src", src);
+      movieVideo.setAttribute("poster", poster);
+    }
+  };
+
+  const closeMovieMenu = () => {
+    movieVideo?.pause();
+    movieMenu.hidden = true;
+    movieMenu.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-menu-open");
+    movieButton.focus();
+  };
+
+  const openMovieMenu = () => {
+    pickMovieSource();
+    movieMenu.hidden = false;
+    movieMenu.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-menu-open");
+    window.requestAnimationFrame(() => movieCloseButton?.focus());
+    if (typeof gtag === "function") gtag("event", "guide_movie_open");
+  };
+
+  movieButton.addEventListener("click", openMovieMenu);
+  movieCloseButtons.forEach((button) => button.addEventListener("click", closeMovieMenu));
+
+  movieMenu.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMovieMenu();
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const focusable = [movieCloseButton, movieVideo, movieReturnButton].filter(Boolean);
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+}

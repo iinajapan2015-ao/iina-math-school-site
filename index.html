@@ -35,7 +35,7 @@
     <meta name="twitter:description" content="IINA算数教室は、小学4〜6年生を中心に、中学受験算数をオンラインで学べる算数教室です。公式や解法の暗記だけに頼らず、式・図・考え方を通して、自分で答えを導く力を育てます。">
     <meta name="twitter:image" content="https://iinamath.com/assets/images/iina-og-image.png">
     <link rel="preload" href="assets/images/top-rpg-landscape.webp" as="image" type="image/webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=website-v15-title-refresh">
+    <link rel="stylesheet" href="styles.css?v=website-v16-movie">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -64,6 +64,20 @@
               "url": "https://iinamath.com/assets/images/iina-title-logo.webp",
               "width": 1536,
               "height": 1024
+            }
+          },
+          {
+            "@type": "VideoObject",
+            "@id": "https://iinamath.com/#guide-video",
+            "name": "IINA算数教室 教室案内ムービー",
+            "description": "図形モンスターとの戦いを通して、公式の暗記に頼らず自分で考えるIINA算数教室の算数と、案内人（代表）榎本圭吾、2027年度の新年度生募集をご紹介する約1分の動画です。",
+            "thumbnailUrl": "https://iinamath.com/assets/videos/iina-guide-poster.jpg",
+            "contentUrl": "https://iinamath.com/assets/videos/iina-guide.mp4",
+            "uploadDate": "2026-10-09",
+            "duration": "PT1M15S",
+            "inLanguage": "ja",
+            "publisher": {
+              "@id": "https://iinamath.com/#organization"
             }
           }
         ]
@@ -120,6 +134,10 @@
             <button class="start-button" type="button" data-start-button>
               <span class="start-button__cursor" aria-hidden="true">▶</span>
               <span class="start-button__label">はじめる（IINA算数教室について）</span>
+            </button>
+            <button class="start-button" type="button" data-movie-button aria-haspopup="dialog" aria-controls="movie-menu">
+              <span class="start-button__cursor" aria-hidden="true">▶</span>
+              <span class="start-button__label">教室案内ムービー(約1分)</span>
             </button>
             <a class="start-button" href="column/">
               <span class="start-button__cursor" aria-hidden="true">▶</span>
@@ -190,6 +208,32 @@
       </section>
     </div>
 
+    <div class="start-menu" id="movie-menu" data-movie-menu aria-hidden="true" hidden>
+      <button class="start-menu__backdrop" type="button" data-movie-close tabindex="-1" aria-label="教室案内ムービーを閉じる"></button>
+
+      <section class="start-menu__window movie-menu__window" role="dialog" aria-modal="true" aria-labelledby="movie-menu-title">
+        <header class="start-menu__header">
+          <h2 id="movie-menu-title">教室案内ムービー</h2>
+          <button class="start-menu__close" type="button" data-movie-close aria-label="教室案内ムービーを閉じる">×</button>
+        </header>
+        <div class="movie-menu__body">
+          <div class="movie-menu__frame">
+            <video class="movie-menu__video" data-movie-video controls playsinline preload="none"
+              poster="assets/videos/iina-guide-poster.jpg"
+              data-wide-src="assets/videos/iina-guide.mp4" data-wide-poster="assets/videos/iina-guide-poster.jpg"
+              data-tall-src="assets/videos/iina-guide-reel.mp4" data-tall-poster="assets/videos/iina-guide-reel-poster.jpg">
+              お使いのブラウザでは動画を再生できません。
+            </video>
+          </div>
+          <p class="movie-menu__caption">音が出ます。図形モンスターとの戦いで、IINA算数教室の「考える算数」をご紹介します。</p>
+          <button class="dungeon-menu__return" type="button" data-movie-close>
+            <span aria-hidden="true">←</span>
+            もどる
+          </button>
+        </div>
+      </section>
+    </div>
+
     <div class="start-menu" data-start-notice aria-hidden="true" hidden>
       <button class="start-menu__backdrop" type="button" data-notice-close tabindex="-1" aria-label="メッセージを閉じる"></button>
 
@@ -208,6 +252,6 @@
       </section>
     </div>
 
-    <script src="script.js?v=website-v5" defer></script>
+    <script src="script.js?v=website-v6-movie" defer></script>
   </body>
 </html>

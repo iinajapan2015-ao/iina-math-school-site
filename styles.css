@@ -3049,3 +3049,58 @@ textarea {
     font-size: 0.9rem;
   }
 }
+
+/* ===== 教室案内ムービー ===== */
+.movie-menu__window {
+  width: min(100%, 880px);
+}
+
+.movie-menu__body {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 16px;
+}
+
+.movie-menu__frame {
+  width: 100%;
+  background: #000;
+  border: 3px solid #fff;
+}
+
+.movie-menu__video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: calc(100svh - 230px);
+  margin: 0 auto;
+  background: #000;
+}
+
+.movie-menu__video.is-tall {
+  width: auto;
+  aspect-ratio: 9 / 16;
+}
+
+.movie-menu__caption {
+  margin: 0;
+  color: #d8d8d8;
+  font-family: var(--sans-font, sans-serif);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+@media (max-width: 719px) {
+  .movie-menu__body {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .movie-menu__video.is-tall {
+    width: 100%;
+    max-height: calc(100svh - 210px);
+    object-fit: contain;
+  }
+}
