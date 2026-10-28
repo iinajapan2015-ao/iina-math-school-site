@@ -331,3 +331,7 @@ footer .logo small{color:#B3A79E}
 .foot-play{margin-top:14px;font-size:12px;color:#B3A79E;line-height:2}
 .foot-play a{color:#D8CFC8;text-decoration:none;border-bottom:1px solid rgba(216,207,200,.35)}
 .foot-play a:hover{color:#FFB37A}
+.video-soon{aspect-ratio:16/9;border:1px dashed #D9C3AF;border-radius:6px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
+.video-soon .en{font-size:12px;letter-spacing:.3em;color:var(--orange);font-weight:700}
+.video-soon b{font-size:clamp(18px,2.4vw,22px);font-weight:600;letter-spacing:.1em;margin:8px 0 4px}
+.video-soon p{color:var(--sub);font-size:14px;margin:0}
