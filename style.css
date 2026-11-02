@@ -335,3 +335,11 @@ footer .logo small{color:#B3A79E}
 .video-soon .en{font-size:12px;letter-spacing:.3em;color:var(--orange);font-weight:700}
 .video-soon b{font-size:clamp(18px,2.4vw,22px);font-weight:600;letter-spacing:.1em;margin:8px 0 4px}
 .video-soon p{color:var(--sub);font-size:14px;margin:0}
+.apply-box{background:#fff;border:2px solid var(--orange);border-radius:6px;padding:36px 32px;text-align:center;margin-bottom:28px}
+.apply-box .en{display:block;font-size:12px;letter-spacing:.3em;color:var(--orange);font-weight:700;margin-bottom:6px}
+.apply-box h2{border:0;padding:0;margin:0 0 14px;font-size:clamp(22px,2.6vw,26px)}
+.apply-box .apply-date{font-size:18px;margin-bottom:8px}
+.apply-box .apply-date b{color:var(--orange-dark);font-size:22px}
+.apply-box p{color:var(--sub)}
+.apply-box .hero-cta{justify-content:center;margin-top:20px}
+@media (max-width:480px){.apply-box{padding:28px 18px}}
