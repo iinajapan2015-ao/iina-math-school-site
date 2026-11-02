@@ -343,3 +343,4 @@ footer .logo small{color:#B3A79E}
 .apply-box p{color:var(--sub)}
 .apply-box .hero-cta{justify-content:center;margin-top:20px}
 @media (max-width:480px){.apply-box{padding:28px 18px}}
+.logo-mark{height:1.25em;width:auto;display:inline-block;vertical-align:-.2em;margin-left:.3em}
