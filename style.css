@@ -350,3 +350,11 @@ footer .logo small{color:#B3A79E}
 .legal-table td small{color:var(--sub);font-size:13px}
 .legal-table a{color:var(--orange-dark)}
 @media (max-width:600px){.legal-table th,.legal-table td{display:block;width:100%}.legal-table th{border-bottom:0;padding:14px 16px 6px}.legal-table td{padding:6px 16px 16px}}
+
+.price-table td.yen.yen-s{font-size:14px;font-weight:600}
+.curri-table{width:100%;border-collapse:collapse;background:#fff;font-size:15px;border-top:1px solid var(--line);margin:0 0 28px}
+.curri-table th,.curri-table td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.7}
+.curri-table thead th{background:var(--bg-soft);font-weight:600;font-size:13px;letter-spacing:.06em;color:var(--sub)}
+.curri-table td:first-child,.curri-table th:first-child{width:3.2em;text-align:center;color:var(--orange-dark);font-weight:600;white-space:nowrap}
+.curri-table td:nth-child(2){white-space:nowrap}
+@media (max-width:600px){.curri-table{font-size:14px}.curri-table th,.curri-table td{padding:10px 8px}}
