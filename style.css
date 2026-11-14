@@ -405,3 +405,5 @@ header{background:rgba(255,252,248,.85);border-bottom:1px solid var(--goldline)}
 .notice{background:rgba(255,250,244,.95);color:var(--ink);border-top:1px solid var(--goldline);border-bottom:1px solid var(--goldline)}
 .notice b{color:#B4601C}
 .notice a{color:#9A562A;border-bottom:1px solid rgba(154,86,42,.45)}
+.btn-line-s{background:linear-gradient(180deg,#fff,#F6EFE8);color:var(--ink)!important;border:1px solid var(--gborder);border-radius:0;padding:8px 16px}
+.btn-line-s::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#06C755;margin-right:8px;vertical-align:1px}
